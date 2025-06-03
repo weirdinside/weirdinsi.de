@@ -1,5 +1,4 @@
 import Videos from "../../../Video/Videos";
-import Carousel from "../../Carousel/Carousel";
 import styles from "./Equinox.module.css";
 
 // https://vimeo.com/379675478

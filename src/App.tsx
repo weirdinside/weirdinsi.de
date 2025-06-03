@@ -17,7 +17,7 @@ import Music from "./Components/Music/Music";
 import RRST from "./Components/Music/RRST/RRST";
 import ColdStart from "./Components/Music/RRST/Cold Start/ColdStart";
 
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import PreviewModal from "./Components/Modals/PreviewModal";
 import { ImagePreviewContext } from "./Contexts/ImagePreviewContext";
 import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl";
@@ -32,7 +32,7 @@ export default function App() {
 
   const [background, setBackground] = useState<string>("");
 
-  function setBackgroundGradient() {
+  const setBackgroundGradient = useCallback(()=>{
     const slug = location.pathname.split("/").at(-1);
     switch (slug) {
       case "cruise-control":
@@ -46,7 +46,7 @@ export default function App() {
       default:
         return setBackground("--bg-cold-start");
     }
-  }
+  }, [setBackground, location])
 
   const { setPreviewModalOpen } = useContext(ImagePreviewContext);
 
@@ -63,11 +63,11 @@ export default function App() {
     return () => {
       window.removeEventListener("keydown", closeOnEsc);
     };
-  }, []);
+  });
 
   useEffect(() => {
     setBackgroundGradient();
-  }, [location]);
+  }, [setBackgroundGradient, location]);
 
   return (
     <div style={{ background: `var(${background})` }} className={styles.page}>

@@ -2,7 +2,7 @@ import styles from "./RRST.module.css";
 
 import RRST_logo from "/art/RRST/rrst.png";
 
-import { Outlet, useLocation, NavLink, Link } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 export default function RRST() {
   const location = useLocation();
