@@ -1,0 +1,67 @@
+.carousel {
+    display: flex;
+    gap: 15px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    max-height: 230px;
+    height: 17.4vw;
+    min-height: 160px;
+    width: 100%;
+    margin: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: white transparent;
+  }
+  
+  .carousel__artwork {
+    display: flex;
+    aspect-ratio: 1 / 1;
+    max-height: 300px;
+    height: 100%;
+    width: auto;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .carousel__artwork:hover .carousel__artwork_description {
+    opacity: 1;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  .carousel__artwork_image {
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+
+  }
+  
+  .carousel__artwork_description {
+    opacity: 0;
+    position: absolute;
+    text-wrap: wrap;
+    white-space: wrap;
+    font-size: clamp(15px, 2.1vw, 17px);
+    font-family: monospace;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 46%,
+      rgb(15, 15, 15) 100%
+    );
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  .carousel__artwork_description_text {
+    margin: 10px 10px;
+  }
+
+  @media screen and (max-width: 500px){
+.carousel{
+  height: 200px;
+}
+    
+    .carousel__artwork{
+      height: 200px;
+      width: 200px;
+    }
+  }

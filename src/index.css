@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Druk";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/fonts/DrukWideBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Podium_9.11";
+  font-style: "normal";
+  font-weight: "normal";
+  src: url("../public/fonts/PodiumSharp_9.11.otf");
+}
+
+@font-face {
+  font-family: "Podium_9.12";
+  font-style: "normal";
+  font-weight: "normal";
+  src: url("../public/fonts/PodiumSharp_9.12.otf");
+}
+
+:root {
+  --bg-cold-start: linear-gradient(
+    24deg,
+    rgba(20, 25, 32, 1) 0%,
+    rgba(23, 30, 40, 1) 66%,
+    rgb(31, 40, 54) 100%
+  );
+  --bg-light-blue: #a9b8c9;
+  background-color: rgb(31, 40, 54) 100%;
+  --bg-cruise-control: linear-gradient(
+    to right top,
+    #10140e,
+    #0c2607
+  );
+  --bg-equinox: linear-gradient(
+    to right top,
+    #151514,
+    #292709
+  );
+  --bg-cross-country: linear-gradient(
+    to right top,
+    #14171e,
+    #331507
+  );
+
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(31, 40, 54) 100%;
+  overflow: hidden;
+}

@@ -1,0 +1,40 @@
+@keyframes slideIn {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  .main__section {
+      margin: 15px 0;
+      overflow: hidden;
+      transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+      animation: slideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    
+    .main__section_title {
+      margin: 0;
+    }
+    
+    .main__title {
+      font-size: clamp(15px, 2vw, 18px);
+      margin: 3px 0;
+      font-family: "Podium_9.11", sans-serif;
+    }
+    
+    .main__description {
+      font-family: sans-serif;
+      font-size: clamp(14px, 1.5vw, 17px);
+    }
+    
+    .main__section_videos {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .main__section_promo {
+      margin-bottom: 0;
+    }
+    

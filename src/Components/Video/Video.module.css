@@ -1,0 +1,162 @@
+.videos__container {
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  position: relative;
+}
+
+.videos__container.feather__right {
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.videos__container.feather__left {
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.videos__container.feather__left.feather__right {
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 5%,
+    rgba(0, 0, 0, 1) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.videos {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  margin: 10px 0;
+  height: auto;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.video.promo {
+  aspect-ratio: 16 / 9;
+}
+
+.video__embed {
+  border: none;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+}
+
+.video__embed.promo {
+  aspect-ratio: 16 / 9;
+}
+
+.video__description {
+  white-space: pre-line;
+  font-family: monospace;
+  font-size: clamp(12px, 1.2vw, 15px);
+}
+
+.arrow {
+  -webkit-mask-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 40%,
+    rgba(255, 0, 0, 0) 100%
+  );
+  position: absolute;
+  font-size: 25px;
+  bottom: 0;
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.arrow.right {
+  right: 0;
+  animation: backAndForthRight 2s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+.arrow.left {
+  left: 0;
+  rotate: 180deg;
+  animation: backAndForthLeft 2s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+@keyframes backAndForthLeft {
+  0% {
+    left: 3%;
+  }
+  50% {
+    left: 1%;
+  }
+  100% {
+    left: 3%;
+  }
+}
+
+@keyframes backAndForthRight {
+  0% {
+    right: 3%;
+  }
+  50% {
+    right: 1%;
+  }
+  100% {
+    right: 3%;
+  }
+}
+
+/* ----------------------------------------- */
+/*           SMALL DESKTOP BREAKPOINT        */
+/* ----------------------------------------- */
+
+@media screen and (max-width: 900px) {
+  .videos {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    gap: 20px;
+    height: auto;
+    scrollbar-color: white transparent;
+  }
+
+  .video {
+    width: auto;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video__embed {
+    height: 200px;
+    aspect-ratio: 16 / 10;
+    width: auto;
+  }
+
+  .video__description {
+    flex-grow: 1;
+    width: auto;
+    white-space: pre-line;
+    margin-top: 10px;
+  }
+}

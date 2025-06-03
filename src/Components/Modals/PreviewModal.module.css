@@ -1,0 +1,102 @@
+.previewmodal {
+  color: black;
+  font-family: monospace;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  z-index: -1;
+  pointer-events: none;
+  transition: 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0;
+}
+
+@keyframes rotateSlow {
+  0% {
+    transform: rotate3d(2, -2, 1, -2deg);
+  }
+  50% {
+    transform: rotate3d(1, -2, 5, 4deg);
+  }
+  100% {
+    transform: rotate3d(2, -2, 1, -2deg);
+  }
+}
+
+.previewmodal.active {
+  .previewmodal__content {
+    animation: rotateSlow 12s ease-in-out infinite;
+    scale: 1;
+    rotate: -1deg;
+    transition: 0.4s
+      linear(
+        0,
+        1 44.7%,
+        0.898 51.8%,
+        0.874 55.1%,
+        0.866 58.4%,
+        0.888 64.3%,
+        1 77.4%,
+        0.98 84.5%,
+        1
+      );
+  }
+  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  z-index: 10;
+  pointer-events: all;
+  opacity: 1;
+}
+
+.previewmodal__texture {
+  background-image: url("../../assets/canvas_texture.jpeg");
+  mix-blend-mode: darken;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.4;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.previewmodal__content {
+  filter: drop-shadow(10px 10px 100px rgba(0, 0, 0, 1));
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f5f5ee;
+  max-height: 70vh;
+  max-width: 70svw;
+  overflow: hidden;
+  padding: 10px;
+  scale: 0;
+  transform: rotate3d(0.1, 0.1, 0.1, 20deg);
+  rotate: -10deg;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.previewmodal__img {
+  display: block;
+  z-index: 3;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: calc(70vh - 60px);
+  width: auto;
+  height: auto;
+}
+
+.previewmodal__description {
+  margin: 10px 0;
+  width: 100%;
+  font-weight: 500;
+  font-size: clamp(12px, 3vw, 15px);
+  z-index: 3;
+}
