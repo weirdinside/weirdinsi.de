@@ -25,6 +25,20 @@ const MusicVideos = [
 export default function ColdStart() {
   return (
     <>
+      <div className={styles.main__heading_box}>
+        <h2 style={{ fontSize: "20px" }} className={styles.main__heading_text}>
+          COLD START
+        </h2>
+        <div className={styles.main__heading_infobox}>
+          <p className={styles.main__heading_subtitle}>EP;5 TRACKS</p>
+          <p className={styles.main__heading_subtitle}>RUNTIME: 12MIN</p>
+          <p className={styles.main__heading_information}>21 MAY 2021</p>
+          <p className={styles.main__heading_information}>AMBIENT, DOWNTEMPO</p>
+          <p className={styles.main__heading_information}>
+            P: DENIS BIBLIONI MUSIC
+          </p>
+        </div>
+      </div>
       <section
         className={`${styles.main__section} ${styles.main__section_abstract}`}
       >

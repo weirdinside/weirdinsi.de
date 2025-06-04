@@ -24,7 +24,8 @@ export default function RRST() {
           </NavLink>
           <div className={styles.rrst__description}>
             'RRST' is an audiovisual project centered around the feeling of
-            driving.
+            driving. Click on a project title below to view its associated
+            content and details.
           </div>
           <div className={styles.nav__block}>
             <NavLink
@@ -34,7 +35,10 @@ export default function RRST() {
                 location.pathname.includes("cruise-control") && styles.active
               }`}
             >
-              <h3 className={styles.nav__link_title}>cruise control</h3>
+              <div className={styles.nav__link_title}>
+                <h3 className={styles.nav__link_title_text}>CRUISE CONTROL</h3>
+                <div className={styles.nav__link_title_stroke} />
+              </div>
               <p className={styles.nav__link_subtitle}>LP;11 TRACKS</p>
               <p className={styles.nav__link_subtitle}>RUNTIME: 36MIN44S</p>
               <p className={styles.nav__link_information}>01 JUL 2018</p>
@@ -50,7 +54,10 @@ export default function RRST() {
                 location.pathname.includes("equinox") && styles.active
               }`}
             >
-              <h3 className={styles.nav__link_title}>equinox</h3>
+              <div className={styles.nav__link_title}>
+                <h3 className={styles.nav__link_title_text}>EQUINOX</h3>
+                <div className={styles.nav__link_title_stroke} />
+              </div>
               <p className={styles.nav__link_subtitle}>SINGLE; 1 TRACK</p>
               <p className={styles.nav__link_subtitle}>RUNTIME: 3MIN20S</p>
               <p className={styles.nav__link_information}>07 JAN 2020</p>
@@ -66,10 +73,13 @@ export default function RRST() {
                 location.pathname.includes("cold-start") && styles.active
               }`}
             >
-              <h3 className={styles.nav__link_title}>cold start</h3>
+              <div className={styles.nav__link_title}>
+                <h3 className={styles.nav__link_title_text}>COLD START</h3>
+                <div className={styles.nav__link_title_stroke} />
+              </div>
               <p className={styles.nav__link_subtitle}>EP;5 TRACKS</p>
-              <p className={styles.nav__link_information}>21 MAY 2021</p>
               <p className={styles.nav__link_subtitle}>RUNTIME: 12MIN</p>
+              <p className={styles.nav__link_information}>21 MAY 2021</p>
               <p className={styles.nav__link_information}>AMBIENT, DOWNTEMPO</p>
               <p className={styles.nav__link_information}>
                 P: DENIS BIBLIONI MUSIC
@@ -82,10 +92,14 @@ export default function RRST() {
                 location.pathname.includes("cross-country") && styles.active
               }`}
             >
-              <h3 className={styles.nav__link_title}>cross country</h3>
+              <div className={styles.nav__link_title}>
+                <h3 className={styles.nav__link_title_text}>CROSS COUNTRY</h3>
+                <div className={styles.nav__link_title_stroke} />
+              </div>
               <p className={styles.nav__link_subtitle}>WIP; 4 TRACKS</p>
-              <p className={styles.nav__link_information}>RD: UNKNOWN</p>
               <p className={styles.nav__link_subtitle}>RUNTIME: UNKNOWN</p>
+
+              <p className={styles.nav__link_information}>RD: UNKNOWN</p>
               <p className={styles.nav__link_information}>AMBIENT, DOWNTEMPO</p>
               <p className={styles.nav__link_information}>
                 P: DENIS BIBLIONI MUSIC

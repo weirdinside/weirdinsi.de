@@ -28,11 +28,11 @@
   flex-direction: column;
   min-width: 150px;
   max-width: 300px;
-  width: 25%;
+  width: 27%;
   flex-shrink: 1;
 }
 
-.nav__block{
+.nav__block {
   display: flex;
   height: 100%;
   overflow-y: auto;
@@ -74,7 +74,7 @@
 }
 
 .main__description {
-  font-family: sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: clamp(14px, 1.5vw, 17px);
 }
 
@@ -89,55 +89,117 @@
 
 .nav__link {
   margin: 10px 0;
+  width: fit-content;
 }
 
 .nav__link:hover {
   .nav__link_title {
     opacity: 0.5;
   }
+
+  .nav__link_title_text{
+    mix-blend-mode: difference;
+    margin-left: 10px;
+    scale: 1.1;
+  }
+
+  .nav__link_title_stroke {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 }
 
+.nav__link_title_text::before{
+  content: ''
+}
+
+.nav__link_title_text::after{
+  content: ''
+}
+
+
 .nav__link.active {
-  .nav__link_title {
+  .nav__link_title_text {
     font-size: clamp(17px, 2.4vw, 24px);
-    font-style: italic;
     font-weight: 600;
+    margin-left: 6px;
+    mix-blend-mode: difference;
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
+
+.nav__link_title_text::before{
+  content: ''
+}
+
+  .nav__link_title_text::after{
+    content: ''
+  }
+
+  .nav__link_title_stroke {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
   .nav__link_subtitle {
-    visibility: visible;
-    max-height: 2000px;
+    opacity: 1;
+    max-height: 500px;
+    font-size: clamp(14px, 2vw, 16px);
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .nav__link_information {
-    visibility: visible;
-    max-height: 2000px;
+    opacity: 1;
+    max-height: 500px;
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 }
 
 .nav__link_title {
-  font-family: sans-serif;
+  position: relative;
+  overflow: visible;
+  width: max-content;
+  transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.nav__link_title_text {
+  position: relative;
+  font-family: "terminal_grotesque", monospace;
   font-style: normal;
   font-weight: 400;
+  font-style: italic;
+  z-index: 3;
   font-size: clamp(15px, 2vw, 20px);
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.nav__link_title_stroke {
+  overflow: visible;
+  position: absolute;
+  top: -20%;
+  left: -5%;
+  background-image: url("../../../assets/stroke.png");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  width: 120%;
+  height: 140%;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
 .nav__link_subtitle {
-  visibility: hidden;
-  max-height: 0px;
-  font-size: clamp(14px, 2vw, 16px);
+  opacity: 1;
+  max-height: 100px;
+  font-size: clamp(11px, 1.2vw, 12px);
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .nav__link_information {
-  visibility: hidden;
   font-weight: 300;
+  opacity: 0;
   max-height: 0px;
-  font-size: clamp(10px, 1.5vw, 14px);
+  font-size: clamp(10px, 1.2vw, 12px);
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -150,32 +212,40 @@
   }
 }
 
+@keyframes clipIn {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
 /* ----------------------------------------- */
 /*             MOBILE BREAKPOINT 1           */
 /* ----------------------------------------- */
 
 @media screen and (max-width: 500px) {
-
-  .page{
+  .page {
     height: 100%;
   }
 
-  .page__container{
+  .page__container {
     margin: 15px;
     height: 100%;
   }
 
-  .rrst__logo{
+  .rrst__logo {
     max-width: 200px;
   }
-  
-  .column__nav{
+
+  .column__nav {
     width: 100%;
     height: 100%;
     animation: slideIn 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  .column__nav.hidden{
+  .column__nav.hidden {
     width: 0px;
     margin: 0;
     padding: 0;
@@ -185,12 +255,12 @@
     opacity: 0;
   }
 
-  .column__content.hidden{
+  .column__content.hidden {
     width: 0px;
     display: none;
   }
 
-  .column__content{
+  .column__content {
     margin: 0;
   }
 }

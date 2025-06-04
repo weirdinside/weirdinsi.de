@@ -68,7 +68,7 @@
 .video__description {
   white-space: pre-line;
   font-family: monospace;
-  font-size: clamp(12px, 1.2vw, 15px);
+  font-size: clamp(11px, 1.2vw, 13px);
 }
 
 .arrow {
@@ -78,7 +78,7 @@
     rgba(255, 0, 0, 0) 100%
   );
   position: absolute;
-  font-size: 25px;
+  font-size: 35px;
   bottom: 0;
   backdrop-filter: blur(4px);
   border-radius: 20px;

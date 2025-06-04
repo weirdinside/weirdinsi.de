@@ -1,6 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+}
+
+@font-face {
+  font-family: 'terminal_grotesque';
+  src: url('/fonts/terminal-grotesque-webfont.eot');
+  src: url('/fonts/terminal-grotesque-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/terminal-grotesque-webfont.woff2') format('woff2'),
+       url('/fonts/terminal-grotesque-webfont.woff') format('woff'),
+       url('/fonts/terminal-grotesque-webfont.ttf') format('truetype'),
+       url('/fonts/terminal-grotesque-webfont.svg#terminal_grotesqueregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
 @font-face {
@@ -33,22 +48,9 @@
   );
   --bg-light-blue: #a9b8c9;
   background-color: rgb(31, 40, 54) 100%;
-  --bg-cruise-control: linear-gradient(
-    to right top,
-    #10140e,
-    #0c2607
-  );
-  --bg-equinox: linear-gradient(
-    to right top,
-    #151514,
-    #292709
-  );
-  --bg-cross-country: linear-gradient(
-    to right top,
-    #14171e,
-    #331507
-  );
-
+  --bg-cruise-control: linear-gradient(to right top, #10140e, #0c2607);
+  --bg-equinox: linear-gradient(to right top, #151514, #292709);
+  --bg-cross-country: linear-gradient(to right top, #14171e, #331507);
 }
 
 a {

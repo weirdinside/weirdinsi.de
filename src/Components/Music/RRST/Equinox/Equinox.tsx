@@ -22,6 +22,18 @@ const PromoVideos = [
 export default function Equinox() {
   return (
     <>
+      <div className={styles.main__heading_box}>
+        <h2 style={{fontSize: '30px'}} className={styles.main__heading_text}>EQUINOX</h2>
+        <div className={styles.main__heading_infobox}>
+          <p className={styles.main__heading_subtitle}>SINGLE; 1 TRACK</p>
+          <p className={styles.main__heading_subtitle}>RUNTIME: 3MIN20S</p>
+          <p className={styles.main__heading_information}>07 JAN 2020</p>
+          <p className={styles.main__heading_information}>AMBIENT, DOWNTEMPO</p>
+          <p className={styles.main__heading_information}>
+            P: Perry André & RRST
+          </p>
+        </div>
+      </div>
       <section
         className={`${styles.main__section} ${styles.main__section_abstract}`}
       >

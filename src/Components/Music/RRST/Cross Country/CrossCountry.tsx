@@ -29,6 +29,21 @@ const PromoVideos = [
 export default function CrossCountry() {
   return (
     <>
+      <div className={styles.main__heading_box}>
+        <h2 style={{ fontSize: "25px" }} className={styles.main__heading_text}>
+          CROSS COUNTRY
+        </h2>
+        <div className={styles.main__heading_infobox}>
+          <p className={styles.main__heading_subtitle}>WIP; 4 TRACKS</p>
+          <p className={styles.main__heading_subtitle}>RUNTIME: UNKNOWN</p>
+
+          <p className={styles.main__heading_information}>RD: UNKNOWN</p>
+          <p className={styles.main__heading_information}>AMBIENT, DOWNTEMPO</p>
+          <p className={styles.main__heading_information}>
+            P: DENIS BIBLIONI MUSIC
+          </p>
+        </div>
+      </div>
       <section
         className={`${styles.main__section} ${styles.main__section_abstract}`}
       >

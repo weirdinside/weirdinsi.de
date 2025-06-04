@@ -1,5 +1,6 @@
 .previewmodal {
   color: black;
+  background-color: rgba(0, 0, 0, 0.575);
   font-family: monospace;
   position: absolute;
   display: flex;
