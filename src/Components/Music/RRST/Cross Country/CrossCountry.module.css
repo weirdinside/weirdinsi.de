@@ -30,8 +30,9 @@
 }
 
 .main__heading_text{
-  width: min-content;
-  font-size: 20px;
+  width: fit-content;
+  font-size: clamp(22px, 3vw, 32px);
+
 }
 
 .main__heading_subtitle {
@@ -86,4 +87,12 @@
 
 .main__section_promo {
   margin-bottom: 0;
+}
+
+
+@media screen and (max-width: 550px){
+  .main__heading_text{
+    width: min-content;
+    font-size: 25px;
+  }
 }

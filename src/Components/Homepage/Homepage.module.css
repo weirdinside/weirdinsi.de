@@ -1,0 +1,158 @@
+.page {
+  width: 100%;
+  height: 100%;
+  animation: gradient 8s ease infinite;
+
+  background: linear-gradient(45deg, rgb(32, 34, 40) 0%, #7191cd 100%);
+  background-size: 200% 300%;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  z-index: 1;
+  animation: noise 2000ms linear infinite;
+
+  mix-blend-mode: multiply;
+  filter: contrast(250%) brightness(120%);
+  background: linear-gradient(0deg, rgb(102, 102, 156), rgba(0, 0, 0, 0)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 4000 4000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes gradient2 {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header {
+  mask-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1.0) 0%,
+    rgba(255, 255, 255, 0.8) 90%,
+    rgba(19, 89, 99, 0) 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 37px;
+  background-color: rgba(16, 16, 16, 0.499);
+  backdrop-filter: blur(20px);
+}
+
+.header__os_logo{
+  height: 100%;
+  width: auto;
+  margin: 0px auto 0px 5px;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  background-image: url('/art/wos.png');
+  filter: invert(1) brightness(2000%);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 20;
+}
+
+.nav__logo {
+  display: flex;
+  position: relative;
+  z-index: 10;
+}
+
+.nav__logo:hover {
+  .nav__logo_overlay {
+    opacity: 1;
+    rotate: 0deg;
+    scale: 1.1;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+
+.nav__logo_overlay {
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
+  /* background-image: url("/art/weird inside logos/weird inside logo.gif"); */
+  background-image: url('/art/weird inside logos/weird inside terminal.png');
+  position: absolute;
+  filter: drop-shadow(0px 0px 20px #000);
+  background-size: contain;
+  opacity: 0;
+  scale: 0;
+  rotate: 10deg;
+  z-index: 5;
+  background-repeat: no-repeat;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.nav__logo_center {
+  background-image: url("/public/art/wos.png");
+  height: 200px;
+  width: 200px;
+  background-size: contain;
+  filter: drop-shadow(20px 10px 10px #000);
+  opacity: 1;
+  background-repeat: no-repeat;
+}
+
+.nav__logo_shimmer {
+  mask-image: url("/public/art/wos.png");
+  background: radial-gradient(#00000000, #e8dee2c7, #c0c8ca00, #0f0f0f00);
+  background-size: 800% 800%;
+  background-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
+
+.nav__logo_bg {
+  mask-image: url("/public/art/wos.png");
+  mask-size: contain;
+  position: absolute;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #6123d5);
+  background-size: 400% 400%;
+  animation: gradient2 15s ease infinite;
+  height: 100%;
+  width: 100%;
+
+  transform: rotateX(0deg) rotateY(0deg) perspective(1cm);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes noise {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 10000%;
+  }
+}

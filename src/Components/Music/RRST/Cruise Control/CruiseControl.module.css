@@ -28,8 +28,8 @@
 }
 
 .main__heading_text{
-  width: min-content;
-  font-size: 20px;
+  width: fit-content;
+  font-size: clamp(18px, 3vw, 32px);
 }
 
 .main__heading_subtitle {
@@ -86,3 +86,10 @@
     margin-bottom: 0;
   }
   
+
+  @media screen and (max-width: 550px){
+    .main__heading_text{
+      width: fit-content;
+      font-size: 25px;
+    }
+  }

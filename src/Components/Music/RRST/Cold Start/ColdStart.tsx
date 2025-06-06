@@ -26,7 +26,7 @@ export default function ColdStart() {
   return (
     <>
       <div className={styles.main__heading_box}>
-        <h2 style={{ fontSize: "20px" }} className={styles.main__heading_text}>
+        <h2  className={styles.main__heading_text}>
           COLD START
         </h2>
         <div className={styles.main__heading_infobox}>

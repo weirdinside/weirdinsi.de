@@ -22,21 +22,21 @@
   font-family: "Druk";
   font-style: normal;
   font-weight: normal;
-  src: url("../public/fonts/DrukWideBold.woff") format("woff");
+  src: url("/fonts/DrukWideBold.woff") format("woff");
 }
 
 @font-face {
   font-family: "Podium_9.11";
   font-style: "normal";
   font-weight: "normal";
-  src: url("../public/fonts/PodiumSharp_9.11.otf");
+  src: url("/fonts/PodiumSharp_9.11.otf");
 }
 
 @font-face {
   font-family: "Podium_9.12";
   font-style: "normal";
   font-weight: "normal";
-  src: url("../public/fonts/PodiumSharp_9.12.otf");
+  src: url("/fonts/PodiumSharp_9.12.otf");
 }
 
 :root {

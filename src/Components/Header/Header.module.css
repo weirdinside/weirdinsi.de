@@ -24,7 +24,7 @@
     transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
     scale: 1.1;
     filter: invert(0);
-    background-image: url("../../../../public/art/weird\ inside\ logos/weird inside logo.gif");
+    background-image: url("/art/weird\ inside\ logos/weird inside logo.gif");
   }
   
   .header__back {

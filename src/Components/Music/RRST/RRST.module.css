@@ -143,14 +143,14 @@
 
   .nav__link_subtitle {
     opacity: 1;
-    max-height: 500px;
+    max-height: 550px;
     font-size: clamp(14px, 2vw, 16px);
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .nav__link_information {
     opacity: 1;
-    max-height: 500px;
+    max-height: 550px;
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 }
@@ -225,7 +225,7 @@
 /*             MOBILE BREAKPOINT 1           */
 /* ----------------------------------------- */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   .page {
     height: 100%;
   }

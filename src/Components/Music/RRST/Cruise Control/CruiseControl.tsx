@@ -19,7 +19,7 @@ export default function CruiseControl() {
   return (
     <>
       <div className={styles.main__heading_box}>
-        <h2 style={{ fontSize: "25px" }} className={styles.main__heading_text}>
+        <h2 className={styles.main__heading_text}>
           CRUISE CONTROL
         </h2>
         <div className={styles.main__heading_infobox}>
