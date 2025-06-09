@@ -1,7 +1,7 @@
 {
   /* UTIL */
 }
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 {
   /* STYLES */
@@ -23,6 +23,7 @@ import { ImagePreviewContext } from "./Contexts/ImagePreviewContext";
 import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl";
 import Equinox from "./Components/Music/RRST/Equinox/Equinox";
 import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
+import Console from "./Components/Console/Console";
 
 {
   /* COMPONENT EXPORT */
@@ -30,9 +31,11 @@ import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
 export default function App() {
   const location = useLocation();
 
+  const navigate = useNavigate();
+
   const [background, setBackground] = useState<string>("");
 
-  const setBackgroundGradient = useCallback(()=>{
+  const setBackgroundGradient = useCallback(() => {
     const slug = location.pathname.split("/").at(-1);
     switch (slug) {
       case "cruise-control":
@@ -46,22 +49,29 @@ export default function App() {
       default:
         return setBackground("--bg-cold-start");
     }
-  }, [setBackground, location])
+  }, [setBackground, location]);
 
-  const { setPreviewModalOpen } = useContext(ImagePreviewContext);
+  const { setPreviewModalOpen, isPreviewModalOpen } =
+    useContext(ImagePreviewContext);
 
   function closeModal() {
     setPreviewModalOpen(false);
   }
 
   useEffect(() => {
-    function closeOnEsc(e: KeyboardEvent) {
-      if (e.key === "Escape") closeModal();
+    function handleEsc(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        if (isPreviewModalOpen) {
+          closeModal();
+        } else {
+          navigate('..')
+        }
+      }
     }
 
-    window.addEventListener("keydown", closeOnEsc);
+    window.addEventListener("keydown", handleEsc);
     return () => {
-      window.removeEventListener("keydown", closeOnEsc);
+      window.removeEventListener("keydown", handleEsc);
     };
   });
 
@@ -72,13 +82,15 @@ export default function App() {
   return (
     <div style={{ background: `var(${background})` }} className={styles.page}>
       <Routes>
-        <Route path="*" element={<Homepage />} />
-        <Route path="music" element={<Music />}>
-          <Route path="rrst" element={<RRST />}>
-            <Route path="cold-start" element={<ColdStart />} />
-            <Route path="equinox" element={<Equinox />} />
-            <Route path="cross-country" element={<CrossCountry/>} />
-            <Route path="cruise-control" element={<CruiseControl />} />
+        <Route path="/" element={<Homepage />}>
+          <Route path="console" element={<Console />} />
+          <Route path="music" element={<Music />}>
+            <Route path="rrst" element={<RRST />}>
+              <Route path="cold-start" element={<ColdStart />} />
+              <Route path="equinox" element={<Equinox />} />
+              <Route path="cross-country" element={<CrossCountry />} />
+              <Route path="cruise-control" element={<CruiseControl />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

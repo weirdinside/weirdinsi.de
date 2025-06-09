@@ -1,0 +1,131 @@
+.logo__container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+}
+
+.nav__logo {
+  display: flex;
+  position: relative;
+  z-index: 10;
+}
+
+.nav__logo:hover {
+  .nav__logo_overlay {
+    opacity: 1;
+    rotate: 0deg;
+    scale: 1.1;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+
+.nav__logo_overlay {
+  cursor: pointer;
+  height: 200px;
+
+  width: 200px;
+  /* background-image: url("/art/weird inside logos/weird inside logo.gif"); */
+  background-image: url("/music.png");
+  position: absolute;
+  filter: drop-shadow(0px 0px 20px #000);
+  background-size: contain;
+  opacity: 0;
+  scale: 0;
+  rotate: 10deg;
+  z-index: 5;
+  background-repeat: no-repeat;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.nav__logo_center {
+  background-image: url("/music.png");
+  height: 200px;
+  width: 200px;
+  background-size: contain;
+  filter: drop-shadow(0px 0px 10px #000);
+  opacity: 1;
+  background-repeat: no-repeat;
+}
+
+.nav__logo_shimmer {
+  mask-image: url("/music.png");
+  background: radial-gradient(#00000000, #e8dee2c7, #c0c8ca00, #0f0f0f00);
+  background-size: 800% 800%;
+  background-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
+
+.nav__logo_bg {
+  mask-image: url("/music.png");
+  mask-size: contain;
+  position: absolute;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #6123d5);
+  background-size: 400% 400%;
+  animation: gradient2 15s ease infinite;
+  height: 100%;
+  width: 100%;
+
+  transform: rotateX(0deg) rotateY(0deg) perspective(1cm);
+}
+
+.circle {
+  background-image: url("/circle.png");
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  top: -25%;
+  filter: invert(1);
+  left: -25%;
+  animation: rotate 30s linear infinite;
+  background-position: center;
+  background-size: contain;
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: -360deg;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes gradient2 {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes noise {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 10000%;
+  }
+}

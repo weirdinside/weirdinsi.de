@@ -1,20 +1,43 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Homepage.module.css";
 
-import movingLogo from "../../assets/wlogoanim.gif";
+import weirdinside_terminal_logo from "/art/weird inside logos/weird inside terminal.png";
+import weirdinside_os_logo from "/art/wos.png";
+import music_logo from "/music.png";
+import code_logo from '/code.png'
+
+import Logo from "./Logo/Logo";
+import { Outlet, useLocation } from "react-router-dom";
 
 export default function Homepage() {
-  const [mousePosition, setMousePosition] = useState<number[]>([]);
-  const [logoPosition, setLogoPosition] = useState<number[]>([]);
+  // some notes - if the implement is touch screen, make sure that you make the site iOS version
+  // meaning that the iOS 5 implementation you did takes over as the 'OS'
+  // otherwise, show everything as is for desktop. also -
+  // when applying the styles, blur is constant 4px-10px for the iOS version. fix this
+
+  const [mousePosition, setMousePosition] = useState<number[]>([0, 0]);
   const [windowSize, setWindowSize] = useState<number[]>([]);
 
-  const [style, setStyle] = useState({});
-  const [style2, setStyle2] = useState({});
-  const [style3, setStyle3] = useState({});
-  const [distanceFromCenter, setDistanceFromCenter] = useState<number>(0);
-  const [distanceFromGlimmer, setDistanceFromGlimmer] = useState<number>(0);
+  const [seed, setSeed] = useState<number>(0);
 
-  const logoRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<number>(null);
+
+  const location = useLocation();
+
+  function isiOS() {
+    const iosQuirkPresent = function () {
+      const audio = new Audio();
+
+      audio.volume = 0.5;
+      return audio.volume === 1;
+    };
+
+    const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const isAppleDevice = navigator.userAgent.includes("Macintosh");
+    const isTouchScreen = navigator.maxTouchPoints >= 1;
+
+    return isiOS || (isAppleDevice && (isTouchScreen || iosQuirkPresent()));
+  }
 
   useEffect(() => {
     function windowListener() {
@@ -23,74 +46,16 @@ export default function Homepage() {
 
     windowListener();
 
+    intervalRef.current = setInterval(() => {
+      setSeed(Math.random() * 200);
+    }, 10);
+
     window.addEventListener("resize", windowListener);
     return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
       window.removeEventListener("resize", windowListener);
     };
   }, []);
-
-  useEffect(() => {
-    if (logoRef.current) {
-      setLogoPosition([
-        logoRef.current.getBoundingClientRect().x +
-          logoRef.current.getBoundingClientRect().width / 2,
-        logoRef.current.getBoundingClientRect().y +
-          logoRef.current.getBoundingClientRect().height / 2,
-      ]);
-    }
-  }, [logoRef]);
-
-  function getFeatheredBlur(dist: number) {
-    const normalized = Math.min(dist / 0.3, 1);
-    const eased = 1 - (1 - normalized) ** 2;
-    return (1 - eased) * 7;
-  }
-
-  useEffect(() => {
-    const percentageX =
-      (mousePosition[0] - logoPosition[0]) / (windowSize[0] / 2);
-    const percentageY =
-      (mousePosition[1] - logoPosition[1]) / (windowSize[1] / 2);
-
-    setDistanceFromCenter(Math.sqrt(percentageX ** 2 + percentageY ** 2));
-
-    const glimmerX = 0.32;
-
-    console.log(movingLogo)
-    const glimmerY = -0.73;
-
-    const dx = percentageX - glimmerX;
-    const dy = percentageY - glimmerY;
-
-    const distFromGlimmer = Math.sqrt(dx ** 2 + dy ** 2);
-    setDistanceFromGlimmer(distFromGlimmer);
-
-    setStyle({
-      transform: `rotateX(${percentageY * -30}deg) rotateY(${
-        percentageX * 30
-      }deg) perspective(0.4cm)`,
-    });
-
-    setStyle2({
-      transform: `translateX(${percentageX * -3}%) translateY(${
-        percentageY * -3
-      }%) rotateX(${percentageY * -30}deg) rotateY(${
-        percentageX * 30
-      }deg) perspective(0.4cm)`,
-      filter: `drop-shadow(${percentageX * -10}px ${percentageY * -10}px ${
-        distanceFromCenter * 10 + 2
-      }px #000)`,
-    });
-
-    setStyle3({
-      transform: `rotateX(${percentageY * -30}deg) rotateY(${
-        percentageX * 30
-      }deg) perspective(0.4cm)`,
-      backgroundPosition: `${percentageX * 100}% ${percentageY * -100}%`,
-    });
-  }, [mousePosition]);
-
-  console.log(1 / distanceFromGlimmer / 50);
 
   return (
     <div
@@ -99,28 +64,65 @@ export default function Homepage() {
       }}
       className={styles.page}
     >
-      <div className={styles.grain} />
+      <svg
+        className={styles.grain}
+        viewBox="0 0 4000 4000"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <filter id="noiseFilter">
+          <feTurbulence
+            type="fractalNoise"
+            seed={seed}
+            baseFrequency="0.65"
+            numOctaves="4"
+            stitchTiles="stitch"
+          />
+        </filter>
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          filter="url(#noiseFilter)"
+        />
+      </svg>
       <div className={styles.page__content}>
-        <div className={styles.header}>
-          <div className={styles.header__os_logo}></div>
-          <div className={styles.header__information} />
+        <div className={`${styles.page__outlet} ${location.pathname.length > 1 && styles.active}`}>
+          <Outlet/>
         </div>
         <div className={styles.page__center}>
-          <div
-            style={{
-              filter: `blur(${getFeatheredBlur(distanceFromGlimmer)}px)`,
-            }}
-            ref={logoRef}
-            className={styles.nav__logo}
-          >
-            <div
-              style={style}
-              className={styles.nav__logo_overlay}
+          <div className={`${styles.nav__item} ${styles.music}`}>
+            <Logo
+              DELTA={40}
+              link="music"
+              PERC={2.4}
+              image={music_logo}
+              mousePosition={mousePosition}
+              windowSize={windowSize}
+              isiOS={isiOS}
             />
-            <div style={style2} className={styles.nav__logo_center} />
-            <div style={style3} className={styles.nav__logo_shimmer} />
-            <div style={style} className={styles.nav__logo_bg} />
           </div>
+          <div className={`${styles.nav__item} ${styles.code}`}>
+            <Logo
+              DELTA={40}
+              link="dev"
+              PERC={2.4}
+              image={code_logo}
+              mousePosition={mousePosition}
+              windowSize={windowSize}
+              isiOS={isiOS}
+            />
+          </div>
+          <Logo
+            link="console"
+            isMainLogo
+            image={weirdinside_os_logo}
+            mousePosition={mousePosition}
+            hoverImage={weirdinside_terminal_logo}
+            windowSize={windowSize}
+            isiOS={isiOS}
+          />
         </div>
       </div>
     </div>
