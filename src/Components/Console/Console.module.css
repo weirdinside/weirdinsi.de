@@ -3,9 +3,12 @@
   min-width: 100%;
   min-height: 100%;
   overflow: hidden;
+  max-height: 100%;
   scale: 0;
   animation: scaleIn 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes scaleIn {
@@ -27,6 +30,7 @@
   background: linear-gradient(#565656, #3b3b3b);
   height: 25px;
   position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
 }
@@ -64,8 +68,15 @@
   background-color: rgb(171, 64, 64);
 }
 
-.console{
-    
+.console {
+  height: max-content;
+}
+
+.page__content {
+  height: 100%;
+  display: flex;
+  overflow: auto;
+  scrollbar-width: thin;
 }
 
 .text {
@@ -81,4 +92,3 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
-

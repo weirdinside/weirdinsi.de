@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
+import styles from "./Console.module.css";
 
 export default function ConsolePrompt({
   setIsPromptTyping,
@@ -6,19 +7,23 @@ export default function ConsolePrompt({
   consoleRef,
   handleSubmitCommand,
   promptText,
+  name,
+  writeText = true,
 }: {
   setIsPromptTyping: (arg0: boolean) => void;
   handleSubmitCommand: (arg0: string) => void;
+  writeText: boolean;
   inputRef: RefObject<HTMLInputElement | null>;
   consoleRef: RefObject<HTMLDivElement | null>;
   promptText: string;
+  name: string;
 }) {
   const textField = useRef<HTMLDivElement>(null);
 
   const [showInput, setShowInput] = useState(false);
   const hasStartedTyping = useRef(false);
 
-  const speed = 20;
+  const speed = 10;
 
   async function typeWriter(): Promise<void> {
     return new Promise((resolve) => {
@@ -47,8 +52,22 @@ export default function ConsolePrompt({
     if (hasStartedTyping.current) return;
     hasStartedTyping.current = true;
 
-    async function startTyping() {
-      await typeWriter();
+    if (writeText) {
+      async function startTyping() {
+        await typeWriter();
+        setShowInput(true);
+        setTimeout(() => {
+          if (inputRef.current) {
+            inputRef.current.focus();
+          }
+        }, 0);
+      }
+
+      if (textField.current) {
+        startTyping();
+      }
+    } else {
+      textField.current!.textContent = promptText;
       setShowInput(true);
       setTimeout(() => {
         if (inputRef.current) {
@@ -56,11 +75,7 @@ export default function ConsolePrompt({
         }
       }, 0);
     }
-
-    if (textField.current) {
-      startTyping();
-    }
-  }, [promptText]);
+  }, [promptText, writeText]);
 
   return (
     <div ref={consoleRef}>
@@ -85,6 +100,7 @@ export default function ConsolePrompt({
         ref={textField}
         style={{
           display: "inline",
+          fontSize: "16px",
           fontFamily: "monospace",
           whiteSpace: "pre-wrap",
         }}
@@ -93,13 +109,14 @@ export default function ConsolePrompt({
         <div
           style={{
             display: "flex",
+            fontSize: "16px",
             alignItems: "center",
             fontFamily: "monospace",
             width: "100%",
             whiteSpace: "pre-wrap",
           }}
         >
-          <span style={{ flexShrink: 0 }}>guest@weirdinsi.de ~ %</span>
+          <span style={{ flexShrink: 0 }}>{name}@weirdinsi.de ~ %</span>
           <div
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -111,6 +128,7 @@ export default function ConsolePrompt({
             ref={inputRef}
             contentEditable
             style={{
+              fontSize: "16px",
               caretColor: "transparent",
               background: "transparent",
               border: "none",
