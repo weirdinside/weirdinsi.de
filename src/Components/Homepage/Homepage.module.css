@@ -104,14 +104,18 @@
   height: 0%;
   position: absolute;
   z-index: -10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   filter: drop-shadow(0 0 20px #000);
 }
 
 .page__outlet.active {
-    width: 90%;
+  min-width: 90%;
+  width: 90%;
   height: 90%;
-    z-index: 20;
+  z-index: 20;
 }
 
 .logo__container {

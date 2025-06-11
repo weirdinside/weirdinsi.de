@@ -14,7 +14,7 @@ import styles from "./App.module.css";
 
 import Homepage from "./Components/Homepage/Homepage";
 import Music from "./Components/Music/Music";
-import RRST from "./Components/Music/RRST/RRST";
+import RRST from "./Components/Music/RRST/RRST"
 import ColdStart from "./Components/Music/RRST/Cold Start/ColdStart";
 
 import { useCallback, useContext, useEffect, useState } from "react";
@@ -24,6 +24,7 @@ import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl"
 import Equinox from "./Components/Music/RRST/Equinox/Equinox";
 import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
 import Console from "./Components/Console/Console";
+import DenisBiblioni from "./Components/Music/Denis Biblioni/DenisBiblioni";
 
 {
   /* COMPONENT EXPORT */
@@ -64,7 +65,7 @@ export default function App() {
         if (isPreviewModalOpen) {
           closeModal();
         } else {
-          navigate('..')
+          navigate("..");
         }
       }
     }
@@ -85,6 +86,10 @@ export default function App() {
         <Route path="/" element={<Homepage />}>
           <Route path="console" element={<Console />} />
           <Route path="music" element={<Music />}>
+            <Route path="denis-biblioni" element={<DenisBiblioni />}>
+              <Route path="DENIS" element={<></>} />
+              <Route path="the-usual" element={<></>} />
+            </Route>
             <Route path="rrst" element={<RRST />}>
               <Route path="cold-start" element={<ColdStart />} />
               <Route path="equinox" element={<Equinox />} />
