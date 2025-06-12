@@ -14,57 +14,61 @@ export default function CoverFlow({
   const [isReady, setIsReady] = useState(false);
 
   function handleScroll() {
-    if (
-      itemRefs.current &&
-      itemRefs.current[0] &&
-      itemRefs.current[1] &&
-      flowRef.current
-    ) {
-      const endItem = Number(
-        itemRefs.current[0]?.getBoundingClientRect().width
-      );
-      const roundedEndItem = Math.round(endItem * 2) / 2;
+    if (!flowRef.current || itemRefs.current.length < 2) return;
 
-      const gap = 15;
-      const coverFlowWidth = flowRef.current.offsetWidth;
-      const coverFlowScrollWidth = flowRef.current.scrollWidth;
-      const currentPosition = flowRef.current.scrollLeft;
+    const flow = flowRef.current;
+    const item = itemRefs.current[0];
+    if (!item) return;
 
-      const oneBoxSize = roundedEndItem + gap;
+    const itemWidth = item.getBoundingClientRect().width;
+    const viewportCenter = flow.offsetWidth / 2;
+    const containerLeft = flow.getBoundingClientRect().left;
 
-      itemRefs.current.forEach((item, idx) => {
-        const distanceFromItem = Math.round(
-          (oneBoxSize * idx - currentPosition) /
-          (coverFlowScrollWidth - coverFlowWidth) * 1000) / 1000
-        const direction = Math.sign(distanceFromItem);
+    const clamp = (val: number, min: number, max: number) =>
+      Math.max(min, Math.min(val, max));
 
+    const style = {
+      scale: (d: number) => {
+        const peak = 1.5;
+        const spread = 0.1;
+        return Math.max(peak * Math.exp(-(d ** 2) / (2 * spread ** 2)), 1);
+      },
+      rotateY: (d: number) => {
+        const maxAngle = -45;
+        const spread = 0.09;
+        return (
+          Math.sign(d) *
+          maxAngle *
+          (1 - Math.exp(-(d ** 2) / (2 * spread ** 2)))
+        );
+      },
+      translateX: (d: number) => {
+        const maxValue = 100;
+        const spread = 0.8;
+        const x = clamp(d / spread, -1, 1);
+        return maxValue * x ** 3;
+      },
+      translateZ: (d: number) => Math.max(-Math.abs(70 * d ** 2) + 2, 0),
+      zIndex: (d: number) => Math.round(-Math.abs(220 * d ** 2) + 30),
+    };
 
-        if (item && item.firstChild) {
-          const calc1 = -Math.abs(70 * distanceFromItem ** 2);
-          const calc2 =
-            -direction *
-            Math.min(Math.abs(50 * Math.abs(distanceFromItem) ** 0.4), 55);
-          const calc3 = -1 * Math.abs(1.2 * distanceFromItem) ** 2 + 1.5
+    itemRefs.current.forEach((item)=>{
+      if (!item || !item.firstChild) return;
 
-          console.log(idx, calc2)
+      const rect = item.getBoundingClientRect();
+      const itemCenter = rect.left - containerLeft + rect.width / 2;
+      const distanceFromCenter = itemCenter - viewportCenter;
+      const d = distanceFromCenter / itemWidth / 10;
 
-          const child = item.firstChild as HTMLElement;
-
-          child.style.transform = `scale(${Math.max(
-            calc1 + 1.5,
-            1
-          )}) translateZ(${Math.max(
-            -Math.abs(70 * distanceFromItem ** 2) + 2,
-            0
-          )}em) rotateY(${calc2}deg)`;
-          item.style.zIndex = `${(-Math.abs(220 * distanceFromItem ** 2) + 30)
-            .toFixed(0)
-            .toString()}`;
-        }
-      });
-    }
-
-    return 0;
+      const child = item.firstChild as HTMLElement;
+      child.style.transform = `
+      scale(${style.scale(d)})
+      translateZ(${style.translateZ(d)}em)
+      rotateY(${style.rotateY(d)}deg)
+      translateX(${-style.translateX(d * 2)}%)
+    `;
+      item.style.zIndex = style.zIndex(d).toString();
+    })
   }
 
   function handleClick(idx: number) {

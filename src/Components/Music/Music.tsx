@@ -76,51 +76,61 @@ export default function Music() {
           </div>
 
           <div className={styles.header__player}>
-            {!(duration === 0) && <div className={styles.header__digital_player}>
-              <p className={styles.digital_player__name}>{songInfo.title}</p>
-              <p className={styles.digital_player__name}>{songInfo.artist}</p>
-              {currentTime && duration ? (
-                <div className={styles.time__controls}>
-                  {currentTime && (
-                    <p className={styles.time}>{`${Math.floor(
-                      songTime / 60
-                    )}:${Math.floor(songTime % 60)
-                      .toString()
-                      .padStart(2, "0")}`}</p>
-                  )}
-                  <input
-                    onPointerDown={() => {
-                      setIsSeeking(true);
-                    }}
-                    onChange={(e) => {
-                      setSongTime(e.target.value * duration)
-                    }}
-                    onPointerUp={(e) => {
-                      setIsSeeking(false);
-                      const value = e.target.value as Number;
-                      seek(value * duration);
-                    }}
-                    onPointerCancel={(e) => {
-                      setIsSeeking(false);
-                      seek(e.target.value * duration);
-                    }}
-                    min={0}
-                    max={1}
-                    step={0.01}
-                    type="range"
-                    value={songTime / duration}
-                    className={styles.slider}
-                  />
-                  {duration && (
-                    <p
-                      className={`${styles.time} ${styles.duration}`}
-                    >{`${Math.floor(duration / 60)}:${Math.floor(duration % 60)
-                      .toString()
-                      .padStart(2, "0")}`}</p>
-                  )}
-                </div>
-              ) : null}
-            </div>}
+            {!(duration === 0) && (
+              <div className={styles.header__digital_player}>
+                <p className={styles.digital_player__name}>{songInfo.title}</p>
+                <p className={styles.digital_player__name}>{songInfo.artist}</p>
+                {currentTime && duration ? (
+                  <div className={styles.time__controls}>
+                    {currentTime && (
+                      <p className={styles.time}>{`${Math.floor(
+                        songTime / 60
+                      )}:${Math.floor(songTime % 60)
+                        .toString()
+                        .padStart(2, "0")}`}</p>
+                    )}
+                    <input
+                      onPointerDown={() => {
+                        setIsSeeking(true);
+                      }}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setSongTime(parseFloat(e.target.value) * duration);
+                      }}
+                      onPointerUp={(
+                        e: React.PointerEvent<HTMLInputElement>
+                      ) => {
+                        setIsSeeking(false);
+                        const value = parseFloat(e.currentTarget.value);
+                        seek(value * duration);
+                      }}
+                      onPointerCancel={(
+                        e: React.PointerEvent<HTMLInputElement>
+                      ) => {
+                        setIsSeeking(false);
+                        const value = parseFloat(e.currentTarget.value);
+                        seek(value * duration);
+                      }}
+                      min={0}
+                      max={1}
+                      step={0.01}
+                      type="range"
+                      value={songTime / duration}
+                      className={styles.slider}
+                    />
+
+                    {duration && (
+                      <p
+                        className={`${styles.time} ${styles.duration}`}
+                      >{`${Math.floor(duration / 60)}:${Math.floor(
+                        duration % 60
+                      )
+                        .toString()
+                        .padStart(2, "0")}`}</p>
+                    )}
+                  </div>
+                ) : null}
+              </div>
+            )}
             {duration === 0 && <div className={styles.header__player_logo} />}
           </div>
         </div>

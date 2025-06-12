@@ -67,7 +67,7 @@ export default function Console() {
 
       pause: () => {
         pause();
-        setPromptText("");
+        setPromptText("song paused");
       },
 
       stop: () => {

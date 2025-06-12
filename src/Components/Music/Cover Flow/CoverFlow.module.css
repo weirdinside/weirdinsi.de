@@ -21,6 +21,7 @@
     transform: translateX(100%) rotateY(45deg);
   }
 } */
+
 .cards__wrapper {
   perspective: 40em;
   display: flex;
@@ -36,12 +37,12 @@
   list-style: none;
   white-space: nowrap;
   overflow-x: auto;
-    perspective: 40em;
+  perspective: 50em;
   scroll-snap-type: x mandatory;
   margin: 0;
   padding: 10% 0;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   width: 100%;
   mask-image: linear-gradient(
     90deg,
