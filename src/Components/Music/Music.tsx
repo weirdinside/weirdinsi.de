@@ -7,16 +7,34 @@ import styles from "./Music.module.css";
 import {
   MdFastForward,
   MdFastRewind,
+  MdPause,
   MdPlayArrow,
   MdSearch,
 } from "react-icons/md";
 import CoverFlow from "./Cover Flow/CoverFlow";
 import { ALL_MUSIC } from "../../constants";
+import { useContext, useEffect, useState } from "react";
+import { MusicPlayerContext } from "../../Contexts/MusicPlayerContext";
 
 export default function Music() {
-  // this page is going to resemble an itunes jawn. player at the top, sidebar with
-
   const location = useLocation();
+  const {
+    play,
+    pause,
+    seek,
+    setCurrentFile,
+    songInfo,
+    currentTime,
+    duration,
+    playerState,
+  } = useContext(MusicPlayerContext);
+
+  const [songTime, setSongTime] = useState<number>(0);
+  const [isSeeking, setIsSeeking] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isSeeking) setSongTime(currentTime);
+  }, [currentTime]);
 
   return (
     <div className={styles.page}>
@@ -28,11 +46,26 @@ export default function Music() {
         <div className={styles.header__main}>
           <div className={styles.header__player_controls}>
             <MdFastRewind
+              onClick={() => {}}
               className={`${styles.player__button} ${styles.rewind}`}
             />
-            <MdPlayArrow
-              className={`${styles.player__button} ${styles.play}`}
-            />
+            {playerState === "paused" && (
+              <MdPlayArrow
+                onClick={() => {
+                  play();
+                }}
+                className={`${styles.player__button} ${styles.play}`}
+              />
+            )}
+            {playerState === "playing" && (
+              <MdPause
+                onClick={() => {
+                  pause();
+                }}
+                className={`${styles.player__button} ${styles.play}`}
+              />
+            )}
+
             <MdFastForward
               className={`${styles.player__button} ${styles.forward}`}
             />
@@ -43,7 +76,52 @@ export default function Music() {
           </div>
 
           <div className={styles.header__player}>
-            <div className={styles.header__player_logo} />
+            <div className={styles.header__digital_player}>
+              <p className={styles.digital_player__name}>{songInfo.title}</p>
+              <p className={styles.digital_player__name}>{songInfo.artist}</p>
+              {currentTime && duration ? (
+                <div className={styles.time__controls}>
+                  {currentTime && (
+                    <p className={styles.time}>{`${Math.floor(
+                      songTime / 60
+                    )}:${Math.floor(songTime % 60)
+                      .toString()
+                      .padStart(2, "0")}`}</p>
+                  )}
+                  <input
+                    onPointerDown={() => {
+                      setIsSeeking(true);
+                    }}
+                    onChange={(e) => {
+                      setSongTime(e.target.value * duration)
+                    }}
+                    onPointerUp={(e) => {
+                      setIsSeeking(false);
+                      const value = e.target.value as Number;
+                      seek(value * duration);
+                    }}
+                    onPointerCancel={(e) => {
+                      setIsSeeking(false);
+                      seek(e.target.value * duration);
+                    }}
+                    min={0}
+                    max={1}
+                    step={0.01}
+                    type="range"
+                    value={songTime / duration}
+                    className={styles.slider}
+                  />
+                  {duration && (
+                    <p
+                      className={`${styles.time} ${styles.duration}`}
+                    >{`${Math.floor(duration / 60)}:${Math.floor(duration % 60)
+                      .toString()
+                      .padStart(2, "0")}`}</p>
+                  )}
+                </div>
+              ) : null}
+            </div>
+            {duration === 0 && <div className={styles.header__player_logo} />}
           </div>
         </div>
       </div>
@@ -131,7 +209,6 @@ export default function Music() {
           {location.pathname.split("/").at(-1) === "music" && (
             <CoverFlow images={ALL_MUSIC} />
           )}
-
           <Outlet />
         </div>
       </div>
