@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./CoverFlow.module.css";
 
 export default function CoverFlow({
@@ -35,7 +35,7 @@ export default function CoverFlow({
       },
       rotateY: (d: number) => {
         const maxAngle = -45;
-        const spread = 0.09;
+        const spread = 0.05;
         return (
           Math.sign(d) *
           maxAngle *
@@ -128,7 +128,7 @@ export default function CoverFlow({
         onPointerLeave={handlePointerUp}
         onPointerUp={handlePointerUp}
         className={styles.cards}
-        onScroll={(e) => {
+        onScroll={() => {
           handleScroll();
         }}
       >

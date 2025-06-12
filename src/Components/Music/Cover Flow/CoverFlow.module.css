@@ -4,23 +4,6 @@
   --cover-size: 20%;
 }
 
-/* @keyframes rotate-cover {
-  0% {
-    transform: translateX(-100%) rotateY(-45deg);
-  }
-  35% {
-    transform: translateX(0) rotateY(-45deg);
-  }
-  50% {
-    transform: rotateY(0deg) translateZ(2em) scale(1.5);
-  }
-  65% {
-    transform: translateX(0) rotateY(45deg);
-  }
-  100% {
-    transform: translateX(100%) rotateY(45deg);
-  }
-} */
 
 .cards__wrapper {
   perspective: 40em;

@@ -4,6 +4,7 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import styles from "./Music.module.css";
 
+import { useContext, useEffect, useState } from "react";
 import {
   MdFastForward,
   MdFastRewind,
@@ -11,10 +12,9 @@ import {
   MdPlayArrow,
   MdSearch,
 } from "react-icons/md";
-import CoverFlow from "./Cover Flow/CoverFlow";
 import { ALL_MUSIC } from "../../constants";
-import { useContext, useEffect, useState } from "react";
 import { MusicPlayerContext } from "../../Contexts/MusicPlayerContext";
+import CoverFlow from "./Cover Flow/CoverFlow";
 
 export default function Music() {
   const location = useLocation();
@@ -22,7 +22,6 @@ export default function Music() {
     play,
     pause,
     seek,
-    setCurrentFile,
     songInfo,
     currentTime,
     duration,

@@ -9,6 +9,7 @@ import { MusicPlayerContext } from "../../../../Contexts/MusicPlayerContext";
 export default function CruiseControl() {
   const { selectSong, setCurrentFile, songInfo } =
     useContext(MusicPlayerContext);
+
   return (
     <div className={styles.page}>
       <section className={styles.coverflow}>
@@ -17,39 +18,49 @@ export default function CruiseControl() {
 
       <section className={`${styles.section} ${styles.music}`}>
         <table className={styles.music__table}>
-          <tr className={`${styles.table__row} ${styles.head}`}>
-            <th className={styles.table__head}>#</th>
-            <th className={styles.table__head}>Name</th>
-            <th className={styles.table__head}>Time</th>
-            <th className={styles.table__head}>Artist</th>
-            <th className={styles.table__head}>Album</th>
-          </tr>
-          {CRUISECONTROL_MUSIC.map((song, idx) => {
-            return (
-              <tr
-                key={idx}
-                onDoubleClick={() => {
-                  selectSong({
-                    title: song.name,
-                    album: "cruise control",
-                    artist: "RRST",
-                  });
-                  setCurrentFile(song.file);
-                }}
-                className={`${styles.table__row} ${
-                  songInfo.title === song.name && styles.active
-                }`}
-              >
-                <td className={`${styles.table__item} ${styles.track} ${ songInfo.title === song.name && styles.active}`}>{song.track}</td>
-                <td className={styles.table__item}>{song.name}</td>
-                <td className={`${styles.table__item} ${styles.time}`}>
-                  {song.time}
-                </td>
-                <td className={styles.table__item}>RRST</td>
-                <td className={styles.table__item}>cruise control</td>
-              </tr>
-            );
-          })}
+          <thead>
+            <tr className={`${styles.table__row} ${styles.head}`}>
+              <th className={styles.table__head}>#</th>
+              <th className={styles.table__head}>Name</th>
+              <th className={styles.table__head}>Time</th>
+              <th className={styles.table__head}>Artist</th>
+              <th className={styles.table__head}>Album</th>
+            </tr>
+          </thead>
+          <tbody>
+            {CRUISECONTROL_MUSIC.map((song, idx) => {
+              return (
+                <tr
+                  key={idx}
+                  onDoubleClick={() => {
+                    selectSong({
+                      title: song.name,
+                      album: "cruise control",
+                      artist: "RRST",
+                    });
+                    setCurrentFile(song.file);
+                  }}
+                  className={`${styles.table__row} ${
+                    songInfo.title === song.name && styles.active
+                  }`}
+                >
+                  <td
+                    className={`${styles.table__item} ${styles.track} ${
+                      songInfo.title === song.name && styles.active
+                    }`}
+                  >
+                    {song.track}
+                  </td>
+                  <td className={styles.table__item}>{song.name}</td>
+                  <td className={`${styles.table__item} ${styles.time}`}>
+                    {song.time}
+                  </td>
+                  <td className={styles.table__item}>RRST</td>
+                  <td className={styles.table__item}>cruise control</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </section>
       <section className={`${styles.section} ${styles.abstract}`}>
