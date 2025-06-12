@@ -7,18 +7,20 @@ type MusicPlayerProviderProps = {
 type MusicPlayerContextType = {
   play: () => void;
   pause: () => void;
+  stop: ()=>void;
   seek: (arg0: number) => void;
   currentTime: number;
   setCurrentFile: (songUrl: string) => void;
   duration: number;
   songInfo: SongInfo;
   selectSong: (arg0: SongInfo) => void;
-  playerState: 'playing' | 'paused'
+  playerState: "playing" | "paused";
 };
 
 const defaultContext: MusicPlayerContextType = {
   play: () => {},
   pause: () => {},
+  stop: ()=>{},
   seek: () => {},
   setCurrentFile: () => {},
   duration: 0,
@@ -29,7 +31,7 @@ const defaultContext: MusicPlayerContextType = {
   },
   currentTime: 0,
   selectSong: () => {},
-  playerState: 'playing',
+  playerState: "playing",
 };
 
 type SongInfo = {
@@ -69,9 +71,18 @@ export default function MusicPlayerProvider({
     if (playerRef.current && currentFile) playerRef.current.pause();
   }
 
+  function stop(){
+    setDuration(0);
+    setCurrentTime(0);
+    setCurrentFile('');
+    if(playerRef.current) playerRef.current.src = '';
+  }
+
   function seek(newTime: number) {
-    setCurrentTime(newTime);
-    playerRef.current.currentTime = newTime
+    if (playerRef.current) {
+      setCurrentTime(newTime);
+      playerRef.current.currentTime = newTime;
+    }
   }
 
   useEffect(() => {
@@ -85,6 +96,7 @@ export default function MusicPlayerProvider({
         play,
         pause,
         seek,
+        stop,
         currentTime,
         setCurrentFile,
         duration,
@@ -104,9 +116,16 @@ export default function MusicPlayerProvider({
         onPause={() => {
           setPlayerState("paused");
         }}
+        onEnded={() => {
+          setCurrentFile("");
+          setSongInfo({ title: "", artist: "", album: "" });
+          setPlayerState("paused");
+          setDuration(0);
+          setCurrentTime(0);
+        }}
         onLoadedData={() => {
           play();
-          if(playerRef.current) setDuration(playerRef.current.duration)
+          if (playerRef.current) setDuration(playerRef.current.duration);
         }}
         ref={playerRef}
         src={currentFile}

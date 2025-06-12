@@ -76,7 +76,7 @@ export default function Music() {
           </div>
 
           <div className={styles.header__player}>
-            <div className={styles.header__digital_player}>
+            {!(duration === 0) && <div className={styles.header__digital_player}>
               <p className={styles.digital_player__name}>{songInfo.title}</p>
               <p className={styles.digital_player__name}>{songInfo.artist}</p>
               {currentTime && duration ? (
@@ -120,7 +120,7 @@ export default function Music() {
                   )}
                 </div>
               ) : null}
-            </div>
+            </div>}
             {duration === 0 && <div className={styles.header__player_logo} />}
           </div>
         </div>

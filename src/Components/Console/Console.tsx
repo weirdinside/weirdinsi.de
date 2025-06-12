@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Console.module.css";
 import ConsolePrompt from "./ConsolePrompt";
+import { MusicPlayerContext } from "../../Contexts/MusicPlayerContext";
 export default function Console() {
   const [isPromptTyping, setIsPromptTyping] = useState<boolean>(false);
   const [name, setName] = useState<string>("guest");
@@ -21,6 +22,9 @@ export default function Console() {
   const [promptText, setPromptText] = useState<string>(
     'hello, welcome to my internal system. please enter a command, or "help" to see a list of commands'
   );
+
+  const { pause, play, setCurrentFile, stop, selectSong } =
+    useContext(MusicPlayerContext);
 
   const validDirs = new Set([
     "dev",
@@ -55,6 +59,21 @@ export default function Console() {
 
     const commands: Record<string, () => void> = {
       "": () => setPromptText(""),
+
+      play: () => {
+        play();
+        setPromptText("");
+      },
+
+      pause: () => {
+        pause();
+        setPromptText("");
+      },
+
+      stop: () => {
+        stop();
+        setPromptText("song stopped");
+      },
 
       ls: () => setPromptText("readme.txt\tfriends.txt\tabout.txt\tmusic\tdev"),
 

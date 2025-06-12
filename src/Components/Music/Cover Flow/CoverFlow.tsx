@@ -33,16 +33,20 @@ export default function CoverFlow({
       const oneBoxSize = roundedEndItem + gap;
 
       itemRefs.current.forEach((item, idx) => {
-        const distanceFromItem =
+        const distanceFromItem = Math.round(
           (oneBoxSize * idx - currentPosition) /
-          (coverFlowScrollWidth - coverFlowWidth);
+          (coverFlowScrollWidth - coverFlowWidth) * 1000) / 1000
         const direction = Math.sign(distanceFromItem);
+
 
         if (item && item.firstChild) {
           const calc1 = -Math.abs(70 * distanceFromItem ** 2);
           const calc2 =
             -direction *
             Math.min(Math.abs(50 * Math.abs(distanceFromItem) ** 0.4), 55);
+          const calc3 = -1 * Math.abs(1.2 * distanceFromItem) ** 2 + 1.5
+
+          console.log(idx, calc2)
 
           const child = item.firstChild as HTMLElement;
 
