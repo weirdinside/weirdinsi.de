@@ -14,6 +14,8 @@ export default function CruiseControl() {
           experience of finding warmth in the biting cold.
         </p>
       </section>
+      <section className={`${styles.section} ${styles.songs}`}>
+      </section>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 /* coverflow solution by bramus (https://www.bram.us/), adapted to react by me */
 
 :root {
-  --cover-size: 20%;
+  --cover-size: 27%;
 }
 
-/* @keyframes rotate-cover {
+@keyframes rotate-cover {
   0% {
     transform: translateX(-100%) rotateY(-45deg);
   }
@@ -18,9 +18,22 @@
     transform: translateX(0) rotateY(45deg);
   }
   100% {
-    transform: translateX(100%) rotateY(45deg);
+    transform: translateX(1 00%) rotateY(45deg);
   }
-} */
+}
+
+@keyframes adjust-z-index {
+  0% {
+    z-index: 1;
+  }
+  50% {
+    z-index: 100;
+  }
+  100% {
+    z-index: 1;
+  }
+}
+
 .cards__wrapper {
   perspective: 40em;
   display: flex;
@@ -36,12 +49,11 @@
   list-style: none;
   white-space: nowrap;
   overflow-x: auto;
-    perspective: 40em;
   scroll-snap-type: x mandatory;
   margin: 0;
   padding: 10% 0;
   display: flex;
-  gap: 15px;
+  gap: 1rem;
   width: 100%;
   mask-image: linear-gradient(
     90deg,
@@ -71,19 +83,6 @@
   background: rgba(255, 255, 255, 0.5);
 }
 
-/* .card__item:first-of-type .card__image{
-  transform: translateZ(2em) scale(1.5);
-  z-index: 1000;
-}
-
-.card__item:nth-of-type(2) .card__image{
-    transform: translateX(-10%) rotateY(-70deg);
-}
-
-.card__item:nth-of-type(3) .card__image{
-     transform: translateX(-60%) rotateY(-80deg);
-} */
-
 .card__item {
   transform-style: preserve-3d;
   display: inline-block;
@@ -91,7 +90,15 @@
   aspect-ratio: 1;
   scroll-snap-align: center;
   flex-shrink: 0;
+
+  view-timeline-name: --li-in-and-out-of-view;
+  view-timeline-axis: inline;
+
+  animation: adjust-z-index linear both;
+  animation-timeline: --li-in-and-out-of-view;
   perspective: 50em;
+
+  transition: transform 0.3s ease;
 }
 
 .card__item:first-of-type {
@@ -106,14 +113,21 @@
   width: 100%;
   height: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  filter: drop-shadow(0px 4px 10px #0000008d);
+  filter: drop-shadow(0px 20px 10px #0000008d);
+
+  -webkit-box-reflect: below 0.5em
+    linear-gradient(transparent, rgba(0, 0, 0, 0.25));
 
   animation: rotate-cover linear both;
+  animation-timeline: --li-in-and-out-of-view;
 
-  transform: rotateY(0deg);
+  transform: translateX(-100%) rotateY(-45deg);
   transform-style: preserve-3d;
+  will-change: transform;
   position: relative;
   user-select: none;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes fadeIn {

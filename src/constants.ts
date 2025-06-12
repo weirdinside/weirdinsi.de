@@ -102,8 +102,73 @@ export const CRUISECONTROL_ARTWORKS = [
 ];
 
 export const CRUISECONTROL_MUSIC = [
-  
-]
+  {
+    track: "01",
+    time: "1:28",
+    name: "leaving",
+    file: "/music/01leaving.m4a",
+  },
+  {
+    track: "02",
+    time: "5:50",
+    name: "I-287",
+    file: "/music/02I287.m4a",
+  },
+  {
+    track: "03",
+    time: "3:54",
+    name: "traction",
+    file: "/music/traction.m4a",
+  },
+  {
+    track: "04",
+    time: "2:24",
+    name: "miles to go",
+    file: "/music/04milestogo.m4a",
+  },
+  {
+    track: "05",
+    time: "3:38",
+    name: "never east",
+    file: "/music/05nevereast.m4a",
+  },
+  {
+    track: "06",
+    time: "2:14",
+    name: "fields",
+    file: "/music/06fields.m4a",
+  },
+  {
+    track: "07",
+    time: "3:57",
+    name: "state line",
+    file: "/music/07stateline.m4a",
+  },
+  {
+    track: "08",
+    time: "2:30",
+    name: "are we there yet",
+    file: "/music/08arewethereyet.m4a",
+  },
+  {
+    track: "09",
+    time: "4:26",
+    name: "shifting",
+    file: "/music/09shifting.m4a",
+  },
+  {
+    track: "10",
+    time: "4:35",
+    name: "cruise control",
+    file: "/music/10cruisecontrol.m4a",
+  },
+  {
+    track: "11",
+    time: "1:43",
+    name: "all of it",
+    file: "/music/11allofit.m4a",
+  },
+];
 
 export const CROSSCOUNTRY_ARTWORKS = [
   {
