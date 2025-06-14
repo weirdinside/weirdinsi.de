@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./CoverFlow.module.css";
 
 export default function CoverFlow({
@@ -52,7 +52,7 @@ export default function CoverFlow({
       zIndex: (d: number) => Math.round(-Math.abs(220 * d ** 2) + 30),
     };
 
-    itemRefs.current.forEach((item)=>{
+    itemRefs.current.forEach((item) => {
       if (!item || !item.firstChild) return;
 
       const rect = item.getBoundingClientRect();
@@ -68,7 +68,7 @@ export default function CoverFlow({
       translateX(${-style.translateX(d * 2)}%)
     `;
       item.style.zIndex = style.zIndex(d).toString();
-    })
+    });
   }
 
   function handleClick(idx: number) {
@@ -109,7 +109,13 @@ export default function CoverFlow({
 
     flowRef.current.scrollTo(flowRef.current.scrollWidth / 2 - marginLeft, 0);
 
-    handleScroll();
+    setTimeout(() => {
+      handleScroll();
+    }, 301);
+    // this is shitty, but it compensates for the possibilty of the user opening the music window
+    // the container that this component is located in scales up from 0 for 0.3s, so at 301ms (3.01s)
+    // it calculates the scroll%, when the window is at its full scale.
+
     setIsReady(true);
   }, [flowRef, itemRefs]);
 

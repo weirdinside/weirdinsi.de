@@ -6,7 +6,7 @@
   max-width: 1200px;
   height: 100%;
   border-radius: 10px;
-  scale: 0;
+  scale: 1;
   z-index: 9999;
   overflow: hidden;
   background: #d4dae6;
