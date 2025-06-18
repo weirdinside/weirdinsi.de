@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
-import styles from "./Console.module.css";
 
 export default function ConsolePrompt({
   setIsPromptTyping,
   inputRef,
   consoleRef,
+  isPromptTyping,
   handleSubmitCommand,
   promptText,
   name,
@@ -12,6 +12,7 @@ export default function ConsolePrompt({
 }: {
   setIsPromptTyping: (arg0: boolean) => void;
   handleSubmitCommand: (arg0: string) => void;
+  isPromptTyping: boolean;
   writeText: boolean;
   inputRef: RefObject<HTMLInputElement | null>;
   consoleRef: RefObject<HTMLDivElement | null>;
@@ -51,6 +52,8 @@ export default function ConsolePrompt({
   useEffect(() => {
     if (hasStartedTyping.current) return;
     hasStartedTyping.current = true;
+
+    console.log(isPromptTyping)
 
     if (writeText) {
       async function startTyping() {

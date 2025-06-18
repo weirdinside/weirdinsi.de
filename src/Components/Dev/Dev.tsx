@@ -3,32 +3,24 @@ import { Link, Outlet } from "react-router-dom";
 import styles from "./Dev.module.css";
 import DevNavItem from "./NavItem/DevNavItem";
 
-const DENIS_PAGES = [
-  {
-    title: "README.md",
-    url: "#readme",
-  },
-  {
-    title: "stack.js",
-    url: "#stack",
-  },
-  {
-    title: "design.fig",
-    url: "#design",
-  },
-];
+import FIG_ICON from "/other logos/figmalogo.png";
+import JS_ICON from "/other logos/jslogo.png";
+import MD_ICON from '/other logos/mdlogo.png';
 
-const REES_CLUB_PAGES = [
+const DEFAULT_PAGES = [
   {
     title: "README.md",
+    icon: MD_ICON,
     url: "#readme",
   },
   {
     title: "stack.js",
+    icon: JS_ICON,
     url: "#stack",
   },
   {
     title: "design.fig",
+    icon: FIG_ICON,
     url: "#design",
   },
 ];
@@ -41,7 +33,7 @@ export default function Dev() {
       <header className={styles.header}>
         <Link to="/" className={styles.header__close_button} />
         <div className={styles.header__title}>
-          weird inside OS -- software development work
+          weird inside OS ― software development work
         </div>
       </header>
       <div className={styles.page__content}>
@@ -53,21 +45,28 @@ export default function Dev() {
               link="denisworks"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
-              items={DENIS_PAGES}
+              items={DEFAULT_PAGES}
             />
             <DevNavItem
               title="20VT.HELP"
               link="20vt"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
-              items={REES_CLUB_PAGES}
+              items={DEFAULT_PAGES}
             />
             <DevNavItem
               title="REES.CLUB"
               link="reesclub"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
-              items={REES_CLUB_PAGES}
+              items={DEFAULT_PAGES}
+            />
+            <DevNavItem
+              title="BENDER.FILM"
+              link="bender"
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+              items={DEFAULT_PAGES}
             />
           </div>
         </div>

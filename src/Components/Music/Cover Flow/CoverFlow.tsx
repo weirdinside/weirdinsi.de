@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./CoverFlow.module.css";
 
 export default function CoverFlow({
@@ -96,7 +96,7 @@ export default function CoverFlow({
     });
   }
 
-  function handlePointerUp(e: React.PointerEvent<HTMLUListElement>) {
+  function handlePointerUp() {
     if (isDragging.current) isDragging.current = false;
   }
 

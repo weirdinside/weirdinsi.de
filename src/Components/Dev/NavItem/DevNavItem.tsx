@@ -3,6 +3,7 @@ import styles from "./DevNavItem.module.css";
 
 type Items = {
   title: string;
+  icon: string;
   url: string;
 };
 
@@ -47,13 +48,19 @@ export default function DevNavItem({
         <span className={styles.arrow}></span>
         {title}
       </h3>
-      {items.map((item) => {
-        return (
-          <Link to={item.url} className={styles.column__nav_subheading}>
-            {item.title}
-          </Link>
-        );
-      })}
+      <div className={styles.subheadings}>
+        {items.map((item) => {
+          return (
+            <Link to={item.url} className={styles.column__nav_subheading}>
+              <div
+                style={{ backgroundImage: `url(${item.icon})` }}
+                className={styles.logo}
+              />
+              {item.title}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }

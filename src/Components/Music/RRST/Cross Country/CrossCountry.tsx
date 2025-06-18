@@ -1,7 +1,6 @@
-import React from "react";
-import styles from "./CrossCountry.module.css";
-import CoverFlow from "../../Cover Flow/CoverFlow";
 import { CROSSCOUNTRY_ARTWORKS } from "../../../../constants";
+import CoverFlow from "../../Cover Flow/CoverFlow";
+import styles from "./CrossCountry.module.css";
 
 export default function CrossCountry() {
   return (

@@ -1,0 +1,14 @@
+.page {
+  font-family: monospace;
+  font-size: clamp(12px, 3vw, 15px);
+  user-select: none;
+}
+
+.link {
+  color: #f09165;
+}
+
+.link:hover {
+  color: #569ad7;
+  text-decoration: underline;
+}

@@ -2,17 +2,16 @@
   /* UTIL */
 }
 import {
-  Navigate,
   Route,
   Routes,
   useLocation,
-  useNavigate,
+  useNavigate
 } from "react-router-dom";
+import styles from "./App.module.css";
 
 {
   /* STYLES */
 }
-import styles from "./App.module.css";
 
 {
   /* COMPONENT IMPORTS */
@@ -20,25 +19,24 @@ import styles from "./App.module.css";
 
 import Homepage from "./Components/Homepage/Homepage";
 import Music from "./Components/Music/Music";
-import RRST from "./Components/Music/RRST/RRST";
 import ColdStart from "./Components/Music/RRST/Cold Start/ColdStart";
+import RRST from "./Components/Music/RRST/RRST";
 
 import { useCallback, useContext, useEffect, useState } from "react";
 import PreviewModal from "./Components/Modals/PreviewModal";
 import { ImagePreviewContext } from "./Contexts/ImagePreviewContext";
 
+import Console from "./Components/Console/Console";
+import Site20vt from "./Components/Dev/20vt.help/Site20vt";
+import SiteBenderFilm from "./Components/Dev/bender.film/SiteBenderFilm";
+import SiteDenisWorks from "./Components/Dev/denis.works/SiteDenisWorks";
+import Dev from "./Components/Dev/Dev";
+import SiteReesClub from "./Components/Dev/rees.club/SiteReesClub";
+import DENIS from "./Components/Music/Denis Biblioni/DENIS/DENIS";
+import DenisBiblioni from "./Components/Music/Denis Biblioni/DenisBiblioni";
+import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
 import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl";
 import Equinox from "./Components/Music/RRST/Equinox/Equinox";
-import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
-import Console from "./Components/Console/Console";
-import DenisBiblioni from "./Components/Music/Denis Biblioni/DenisBiblioni";
-import Dev from "./Components/Dev/Dev";
-import DENIS from "./Components/Music/Denis Biblioni/DENIS/DENIS";
-import DenisWorks from "./Components/Dev/denis.works/SiteDenisWorks";
-import ReesClub from "./Components/Dev/rees.club/SiteReesClub";
-import SiteDenisWorks from "./Components/Dev/denis.works/SiteDenisWorks";
-import SiteReesClub from "./Components/Dev/rees.club/SiteReesClub";
-import Site20vt from "./Components/Dev/20vt.help/Site20vt";
 
 {
   /* COMPONENT EXPORT */
@@ -103,7 +101,7 @@ export default function App() {
             <Route path="denisworks" element={<SiteDenisWorks />} />
             <Route path="20vt" element={<Site20vt />} />
             <Route path="reesclub" element={<SiteReesClub />} />
-            <Route path="bender" />
+            <Route path="bender" element={<SiteBenderFilm />} />
           </Route>
           <Route path="music" element={<Music />}>
             <Route path="denis-biblioni" element={<DenisBiblioni />}>

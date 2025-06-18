@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { MusicPlayerContext } from "../../Contexts/MusicPlayerContext";
 import styles from "./Console.module.css";
 import ConsolePrompt from "./ConsolePrompt";
-import { MusicPlayerContext } from "../../Contexts/MusicPlayerContext";
 export default function Console() {
   const [isPromptTyping, setIsPromptTyping] = useState<boolean>(false);
   const [name, setName] = useState<string>("guest");
@@ -13,7 +13,7 @@ export default function Console() {
   const consoleRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [commandHistory, setCmdHistory] = useState<string[]>([]);
+  // const [commandHistory, setCmdHistory] = useState<string[]>([]);
 
   // todo- prompt history
 
@@ -23,8 +23,7 @@ export default function Console() {
     'hello, welcome to my internal system. please enter a command, or "help" to see a list of commands'
   );
 
-  const { pause, play, setCurrentFile, stop, selectSong } =
-    useContext(MusicPlayerContext);
+  const { pause, play, stop } = useContext(MusicPlayerContext);
 
   const validDirs = new Set([
     "dev",
@@ -111,7 +110,8 @@ export default function Console() {
       },
     };
 
-    if (commands.hasOwnProperty(input)) {
+    if (Object.prototype.hasOwnProperty.call(commands, input)) {
+      // i would use it directly but this is to circumvent an ESlint error
       commands[input]();
     } else if (input === "what the helly") {
       setPromptText("what the helly do you want \ntype help to get started");
@@ -219,6 +219,7 @@ export default function Console() {
             promptText={promptText}
             inputRef={inputRef}
             consoleRef={consoleRef}
+            isPromptTyping={isPromptTyping}
             setIsPromptTyping={setIsPromptTyping}
           />
         </div>

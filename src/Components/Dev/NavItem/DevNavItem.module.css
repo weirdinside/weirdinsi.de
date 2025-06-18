@@ -40,6 +40,11 @@
     padding: 2px 0 2px 22px;
   }
 
+  .subheadings {
+    max-height: 100px;
+    transition: 0.5s ease-in-out;
+  }
+
   .arrow::after {
     left: 1px;
     transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -56,13 +61,32 @@
   position: relative;
 }
 
+.subheadings {
+  max-height: 0px;
+  overflow: hidden;
+  transition: 1s ease-in-out;
+}
+
 .column__nav_subheading {
   cursor: pointer;
   width: calc(100% - 22px);
   padding: 0px 0px 0px 22px;
+  height: 100%;
   max-height: 0px;
   font-size: clamp(12px, 2.5vw, 16px);
+  margin-right: 8px;
   background-color: #252526;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
   /* transition: 0.3s linear; */
+}
+
+.logo {
+  aspect-ratio: 1 / 1;
+  width: clamp(15px, 2.5vw, 18px);
+  margin-right: 3px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
