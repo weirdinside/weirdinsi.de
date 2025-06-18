@@ -1,6 +1,5 @@
 .videos__container {
   transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-
   position: relative;
 }
 
@@ -34,7 +33,7 @@
   );
 }
 
-.videos {
+.videos { 
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -88,6 +87,7 @@
   align-items: center;
   justify-content: center;
   z-index: 3;
+  color: white;
 }
 
 .arrow.right {

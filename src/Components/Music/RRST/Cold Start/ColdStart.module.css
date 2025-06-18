@@ -1,15 +1,33 @@
 .page {
-  width: calc(100% - 20px);
+  width: 100%;
   height: calc(100% - 20px);
   display: flex;
   flex-direction: column;
   font-family: "SF Pro Display", sans-serif;
-  padding: 10px;
+  padding: 0;
   user-select: none;
   color: black;
 }
 
 .section {
+  margin: 0;
+}
+
+.section.abstract{
+  /* margin: 10px 10px; */
+  color: black;
+}
+
+.section.videos{
+  margin: 0 10px;
+}
+
+.section.promo{
+  margin: 0 10px;
+}
+
+.coverflow {
+  height: max-content;
 }
 
 .main__heading_box {
@@ -24,7 +42,7 @@
   font-family: "Apple Garamond", sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 60px;
+  font-size: 30px;
 }
 
 .main__heading_subtitle {
@@ -45,7 +63,76 @@
 }
 
 .section.abstract {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
 }
 
 .description {
+    font-family: "SF Pro Display", sans-serif;
+    font-size: clamp(14px, 3vw, 18px);
+    margin: 10px 0;
+}
+
+.music__table {
+  border-bottom: 2px solid white;
+  width: 100%;
+}
+
+.table__row {
+}
+
+.table__row:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.table__row.active {
+  background: linear-gradient(#3488ea);
+  color: white;
+}
+
+.table__row.head {
+}
+
+.table__head {
+  text-align: left;
+  padding: 0 5px;
+  background: linear-gradient(#ffffff, #eff1f3);
+}
+
+.table__item {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.table__item.time {
+  text-align: right;
+}
+
+.table__item.track {
+  text-align: right;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table__item.track.active::before {
+  position: absolute;
+  left: 0;
+  content: "🔊";
+  font-family: monospace;
+}
+
+.table__item,
+.table__row {
+  text-align: left;
+  padding: 2px 5px;
+  border: none;
+}
+
+.table__row:focus{
+  background-color: #3488ea;
 }

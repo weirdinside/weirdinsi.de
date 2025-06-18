@@ -100,7 +100,7 @@ export default function Console() {
       secret: () => {
         setPromptText(
           "\nuser <name> -- allows you to change your username \n\n" +
-            "what the helly -- what the helly? what the hellyonte? what the helly berry? \n\n" +
+            "what the helly -- what the helly? what the hellyante? what the helly berry? \n\n" +
             "hello -- a greeting, formal\n\n"
         );
       },

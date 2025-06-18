@@ -64,7 +64,8 @@
 
 @font-face {
   font-family: "Apple Garamond";
-  src: url("/fonts/apple-garamond/AppleGaramond-LightItalic.ttf") format("truetype");
+  src: url("/fonts/apple-garamond/AppleGaramond-LightItalic.ttf")
+    format("truetype");
   font-weight: 300;
   font-style: italic;
 }
@@ -78,7 +79,8 @@
 
 @font-face {
   font-family: "Apple Garamond";
-  src: url("/fonts/apple-garamond/AppleGaramond-BoldItalic.ttf") format("truetype");
+  src: url("/fonts/apple-garamond/AppleGaramond-BoldItalic.ttf")
+    format("truetype");
   font-weight: 600;
   font-style: italic;
 }
@@ -128,6 +130,8 @@
 a {
   text-decoration: inherit;
   color: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {

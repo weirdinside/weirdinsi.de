@@ -16,18 +16,18 @@
   }
 }
 
-.main__heading_box{
+.main__heading_box {
   width: 100%;
   display: flex;
   margin-bottom: 15px;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  font-family: 'Podium_9.11', monospace;
+  font-family: "Podium_9.11", monospace;
   animation: slideDown 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
-.main__heading_text{
+.main__heading_text {
   width: fit-content;
   font-size: clamp(18px, 3vw, 32px);
 }
@@ -40,7 +40,7 @@
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.main__heading_infobox{
+.main__heading_infobox {
   display: flex;
   text-align: right;
   flex-direction: column;
@@ -56,40 +56,39 @@
 }
 
 .main__section {
-    margin: 15px 0;
-    overflow: hidden;
-    transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
-    animation: slideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  
-  .main__section_title {
-    margin: 0;
-  }
-  
-  .main__title {
-    font-size: clamp(15px, 2vw, 18px);
-    margin: 3px 0;
-    font-family: "Podium_9.11", sans-serif;
-  }
-  
-  .main__description {
-    font-family: 'Rubik', sans-serif;
-    font-size: clamp(14px, 1.5vw, 17px);
-  }
-  
-  .main__section_videos {
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .main__section_promo {
-    margin-bottom: 0;
-  }
-  
+  margin: 15px 0;
+  overflow: hidden;
+  transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: slideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
-  @media screen and (max-width: 550px){
-    .main__heading_text{
-      width: fit-content;
-      font-size: 25px;
-    }
+.main__section_title {
+  margin: 0;
+}
+
+.main__title {
+  font-size: clamp(15px, 2vw, 18px);
+  margin: 3px 0;
+  font-family: "Podium_9.11", sans-serif;
+}
+
+.main__description {
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(14px, 1.5vw, 17px);
+}
+
+.main__section_videos {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main__section_promo {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .main__heading_text {
+    width: fit-content;
+    font-size: 25px;
   }
+}

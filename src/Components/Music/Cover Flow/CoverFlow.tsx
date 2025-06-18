@@ -109,6 +109,12 @@ export default function CoverFlow({
 
     flowRef.current.scrollTo(flowRef.current.scrollWidth / 2 - marginLeft, 0);
 
+    function onResize() {
+      if (!flowRef.current || itemRefs.current.some((el) => !el)) return;
+      flowRef.current.scrollTo(flowRef.current.scrollWidth / 2 - marginLeft, 0);
+      handleScroll();
+    }
+
     setTimeout(() => {
       handleScroll();
     }, 301);
@@ -116,7 +122,13 @@ export default function CoverFlow({
     // the container that this component is located in scales up from 0 for 0.3s, so at 301ms (3.01s)
     // it calculates the scroll%, when the window is at its full scale.
 
+    window.addEventListener("resize", onResize);
+
     setIsReady(true);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
   }, [flowRef, itemRefs]);
 
   return (

@@ -6,6 +6,20 @@ import {
 import CoverFlow from "../../Cover Flow/CoverFlow";
 import styles from "./CruiseControl.module.css";
 import { MusicPlayerContext } from "../../../../Contexts/MusicPlayerContext";
+import Videos from "../../../Video/Videos";
+
+const MusicVideos = [
+  {
+    videoUrl: "https://youtu.be/BE5LIOrpsxs?si=zclhEHP3B1D787jh",
+    description:
+      "credits: Ani Bharadwaj (animator, director, editor) \nanimated & edited in: 1 week \nruntime: 1:52",
+  },
+];
+
+const PromoVideos = [
+  { videoUrl: "https://youtu.be/Utjv54l_upQ?si=caCTEF4MToboArOA" },
+];
+
 export default function CruiseControl() {
   const { selectSong, setCurrentFile, songInfo } =
     useContext(MusicPlayerContext);
@@ -73,6 +87,19 @@ export default function CruiseControl() {
           interstate highway in the US and traveling thousands of miles (on
           cruise control).
         </p>
+        <p className={styles.description}>
+          while some songs (such as 'leaving') are as old as 2016, 'cruise
+          control' was released independently in July 2018, following the
+          release of the singles 'state line,' 'all of it' and 'shifting'.
+        </p>
+      </section>
+      <section className={`${styles.section} ${styles.videos}`}>
+        <h2 className={styles.section__title}>MUSIC VIDEOS</h2>
+        <Videos videoList={MusicVideos} />
+      </section>
+      <section className={`${styles.section} ${styles.promo}`}>
+        <h2 className={styles.section__title}>PROMOTIONAL MATERIAL</h2>
+        <Videos videoList={PromoVideos} />
       </section>
     </div>
   );

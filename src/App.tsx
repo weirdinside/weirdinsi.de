@@ -1,7 +1,13 @@
 {
   /* UTIL */
 }
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 {
   /* STYLES */
@@ -14,17 +20,25 @@ import styles from "./App.module.css";
 
 import Homepage from "./Components/Homepage/Homepage";
 import Music from "./Components/Music/Music";
-import RRST from "./Components/Music/RRST/RRST"
+import RRST from "./Components/Music/RRST/RRST";
 import ColdStart from "./Components/Music/RRST/Cold Start/ColdStart";
 
 import { useCallback, useContext, useEffect, useState } from "react";
 import PreviewModal from "./Components/Modals/PreviewModal";
 import { ImagePreviewContext } from "./Contexts/ImagePreviewContext";
+
 import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl";
 import Equinox from "./Components/Music/RRST/Equinox/Equinox";
 import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
 import Console from "./Components/Console/Console";
 import DenisBiblioni from "./Components/Music/Denis Biblioni/DenisBiblioni";
+import Dev from "./Components/Dev/Dev";
+import DENIS from "./Components/Music/Denis Biblioni/DENIS/DENIS";
+import DenisWorks from "./Components/Dev/denis.works/SiteDenisWorks";
+import ReesClub from "./Components/Dev/rees.club/SiteReesClub";
+import SiteDenisWorks from "./Components/Dev/denis.works/SiteDenisWorks";
+import SiteReesClub from "./Components/Dev/rees.club/SiteReesClub";
+import Site20vt from "./Components/Dev/20vt.help/Site20vt";
 
 {
   /* COMPONENT EXPORT */
@@ -85,9 +99,15 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Homepage />}>
           <Route path="console" element={<Console />} />
+          <Route path="dev" element={<Dev />}>
+            <Route path="denisworks" element={<SiteDenisWorks />} />
+            <Route path="20vt" element={<Site20vt />} />
+            <Route path="reesclub" element={<SiteReesClub />} />
+            <Route path="bender" />
+          </Route>
           <Route path="music" element={<Music />}>
             <Route path="denis-biblioni" element={<DenisBiblioni />}>
-              <Route path="DENIS" element={<></>} />
+              <Route path="DENIS" element={<DENIS />} />
               <Route path="the-usual" element={<></>} />
             </Route>
             <Route path="rrst" element={<RRST />}>

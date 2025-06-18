@@ -1,0 +1,118 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  border-radius: 10px;
+  scale: 1;
+  z-index: 9999;
+  overflow: hidden;
+  background: #1e1e1e;
+  border-radius: 10px;
+  animation: zoomIn 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.header {
+  height: 27px;
+  background-color: #3c3c3c;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__close_button {
+  height: 60%;
+  width: auto;
+  margin: 0 auto 0 4px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 100px;
+  left: 3px;
+  aspect-ratio: 1/1;
+  background-color: rgb(228, 105, 105);
+}
+
+.header__close_button:hover {
+  background-color: rgb(214, 88, 88);
+}
+
+.header__close_button:hover::before {
+  position: absolute;
+  content: "✕";
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+}
+
+.header__close_button:active {
+  background-color: rgb(130, 55, 55);
+}
+
+.header__title {
+  font-family: "SF Pro Display", sans-serif;
+}
+
+.footer {
+  background-color: #0377ce;
+  color: white;
+  height: 25px;
+  margin: auto 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+  align-items: center;
+}
+
+.footer__projectstatus {
+  margin-left: 10px;
+}
+
+.footer__information {
+  margin-right: 10px;
+}
+
+.page__content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+}
+
+.column__options {
+  width: 60px;
+  height: 100%;
+  background-color: #333333;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.column__main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.column__nav {
+  background-color: #252526;
+  width: 25%;
+  min-width: fit-content;
+}
+
+
+@keyframes zoomIn {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
