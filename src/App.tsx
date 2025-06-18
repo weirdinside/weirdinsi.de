@@ -2,10 +2,11 @@
   /* UTIL */
 }
 import {
+  Navigate,
   Route,
   Routes,
   useLocation,
-  useNavigate
+  useNavigate,
 } from "react-router-dom";
 import styles from "./App.module.css";
 
@@ -27,16 +28,17 @@ import PreviewModal from "./Components/Modals/PreviewModal";
 import { ImagePreviewContext } from "./Contexts/ImagePreviewContext";
 
 import Console from "./Components/Console/Console";
-import Site20vt from "./Components/Dev/20vt.help/Site20vt";
-import SiteBenderFilm from "./Components/Dev/bender.film/SiteBenderFilm";
-import SiteDenisWorks from "./Components/Dev/denis.works/SiteDenisWorks";
+import Site20vt from "./Components/Dev/Projects/20vt.help/Site20vt";
+import SiteBenderFilm from "./Components/Dev/Projects/bender.film/SiteBenderFilm";
+import SiteDenisWorks from "./Components/Dev/Projects/denis.works/SiteDenisWorks";
 import Dev from "./Components/Dev/Dev";
-import SiteReesClub from "./Components/Dev/rees.club/SiteReesClub";
+import SiteReesClub from "./Components/Dev/Projects/rees.club/SiteReesClub";
 import DENIS from "./Components/Music/Denis Biblioni/DENIS/DENIS";
 import DenisBiblioni from "./Components/Music/Denis Biblioni/DenisBiblioni";
 import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
 import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl";
 import Equinox from "./Components/Music/RRST/Equinox/Equinox";
+import Projects from "./Components/Dev/Projects/Projects";
 
 {
   /* COMPONENT EXPORT */
@@ -71,22 +73,22 @@ export default function App() {
     setPreviewModalOpen(false);
   }
 
-  useEffect(() => {
-    function handleEsc(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        if (isPreviewModalOpen) {
-          closeModal();
-        } else {
-          navigate("..");
-        }
+useEffect(() => {
+  function handleEsc(e: KeyboardEvent) {
+    if (e.key === "Escape") {
+      if (isPreviewModalOpen) {
+        closeModal();
+      } else {
+        navigate("..");
       }
     }
+  }
 
-    window.addEventListener("keydown", handleEsc);
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-    };
-  });
+  window.addEventListener("keydown", handleEsc);
+  return () => {
+    window.removeEventListener("keydown", handleEsc);
+  };
+}, [isPreviewModalOpen, navigate]);
 
   useEffect(() => {
     setBackgroundGradient();
@@ -98,10 +100,13 @@ export default function App() {
         <Route path="/" element={<Homepage />}>
           <Route path="console" element={<Console />} />
           <Route path="dev" element={<Dev />}>
-            <Route path="denisworks" element={<SiteDenisWorks />} />
-            <Route path="20vt" element={<Site20vt />} />
-            <Route path="reesclub" element={<SiteReesClub />} />
-            <Route path="bender" element={<SiteBenderFilm />} />
+            <Route index element={<Navigate to="projects" replace />} />
+            <Route path="projects" element={<Projects />}>
+              <Route path="denisworks" element={<SiteDenisWorks />} />
+              <Route path="20vt" element={<Site20vt />} />
+              <Route path="reesclub" element={<SiteReesClub />} />
+              <Route path="bender" element={<SiteBenderFilm />} />
+            </Route>
           </Route>
           <Route path="music" element={<Music />}>
             <Route path="denis-biblioni" element={<DenisBiblioni />}>

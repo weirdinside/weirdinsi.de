@@ -8,7 +8,6 @@
   border-radius: 10px;
   scale: 1;
   z-index: 9999;
-  overflow: hidden;
   background: #1e1e1e;
   border-radius: 10px;
   animation: zoomIn 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
@@ -81,12 +80,13 @@
 .page__content {
   display: flex;
   width: 100%;
+  overflow: visible;
   height: 100%;
   flex-direction: row;
 }
 
 .column__options {
-  width: 60px;
+  min-width: 60px;
   height: 100%;
   background-color: #333333;
   display: flex;
@@ -106,8 +106,73 @@
   min-width: max-content;
 }
 
-.outlet{
-  margin: 20px;
+.outlet {
+  width: 100%;
+  max-width: max-content;
+  height: 100%;
+}
+
+.option {
+  width: 100%;
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.option:hover {
+  background-color: #1e1e1e;
+}
+
+.option.functions::before {
+  position: absolute;
+  scale: 0;
+  opacity: 0;
+  content: "functions";
+  background-color: rgb(81, 144, 238);
+  color: white;
+  padding: 3px;
+  font-size: clamp(14px, 3vw, 18px);
+  /* bottom: -10px; */
+  /* right: -100%; */
+  font-weight: 600;
+  font-family: monospace;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.option.functions:hover::before {
+  scale: 1;
+  opacity: 1;
+  z-index: 10;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.option.projects::before {
+  position: absolute;
+  opacity: 0;
+  scale: 0;
+  content: "projects";
+  background-color: rgb(81, 144, 238);
+  color: white;
+  padding: 3px;
+  font-size: clamp(14px, 3vw, 18px);
+  /* bottom: -10px; */
+  /* right: -100%; */
+  font-weight: 600;
+  font-family: monospace;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.option.projects:hover::before {
+  scale: 1;
+  z-index: 10;
+  opacity: 1;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 @keyframes zoomIn {

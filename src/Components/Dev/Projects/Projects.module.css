@@ -1,0 +1,37 @@
+.column__options {
+  min-width: 60px;
+  height: 100%;
+  background-color: #333333;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.column__main {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.column__nav {
+  background-color: #252526;
+  width: 20%;
+  min-width: max-content;
+}
+
+.outlet{
+  width: 100%;
+  max-width: max-content;
+  height: 100%;
+  margin: 20px;
+}
+
+@keyframes zoomIn {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
