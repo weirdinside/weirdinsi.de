@@ -39,6 +39,8 @@ import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
 import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl";
 import Equinox from "./Components/Music/RRST/Equinox/Equinox";
 import Projects from "./Components/Dev/Projects/Projects";
+import Functions from "./Components/Dev/Functions/Functions";
+import TextAutoscroll from "./Components/Dev/Functions/Text Autoscroll/TextAutoscroll";
 
 {
   /* COMPONENT EXPORT */
@@ -73,22 +75,22 @@ export default function App() {
     setPreviewModalOpen(false);
   }
 
-useEffect(() => {
-  function handleEsc(e: KeyboardEvent) {
-    if (e.key === "Escape") {
-      if (isPreviewModalOpen) {
-        closeModal();
-      } else {
-        navigate("..");
+  useEffect(() => {
+    function handleEsc(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        if (isPreviewModalOpen) {
+          closeModal();
+        } else {
+          navigate("..");
+        }
       }
     }
-  }
 
-  window.addEventListener("keydown", handleEsc);
-  return () => {
-    window.removeEventListener("keydown", handleEsc);
-  };
-}, [isPreviewModalOpen, navigate]);
+    window.addEventListener("keydown", handleEsc);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [isPreviewModalOpen, navigate]);
 
   useEffect(() => {
     setBackgroundGradient();
@@ -106,6 +108,9 @@ useEffect(() => {
               <Route path="20vt" element={<Site20vt />} />
               <Route path="reesclub" element={<SiteReesClub />} />
               <Route path="bender" element={<SiteBenderFilm />} />
+            </Route>
+            <Route path="functions" element={<Functions />}>
+              <Route path="textautoscroll" element={<TextAutoscroll />} />
             </Route>
           </Route>
           <Route path="music" element={<Music />}>
