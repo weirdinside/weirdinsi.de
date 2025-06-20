@@ -64,7 +64,7 @@ export default function Homepage() {
       }}
       className={styles.page}
     >
-      <svg
+      {/* <svg
         className={styles.grain}
         viewBox="0 0 4000 4000"
         preserveAspectRatio="none"
@@ -86,7 +86,7 @@ export default function Homepage() {
           height="100%"
           filter="url(#noiseFilter)"
         />
-      </svg>
+      </svg> */}
       <div className={styles.page__content}>
         <div className={`${styles.page__outlet} ${location.pathname.length > 1 && styles.active}`}>
           <Outlet/>

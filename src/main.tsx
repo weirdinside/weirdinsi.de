@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <MusicPlayerProvider>
       <ImagePreviewProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/weirdinsi.de/">
           <App />
         </BrowserRouter>
       </ImagePreviewProvider>

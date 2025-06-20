@@ -8,6 +8,7 @@ import DENIS_DESIGN_MD_2 from "/reference/denis.works screengrabs/mobile.png";
 import DENIS_DESIGN_MD_3 from "/reference/denis.works screengrabs/mobile2.png";
 import DENIS_DESIGN_DT_1 from "/reference/denis.works screengrabs/desktop.png";
 import DENIS_DESIGN_DT_2 from "/reference/denis.works screengrabs/desktop2.png";
+import DENIS_DESIGN_DT_3 from "/reference/denis.works screengrabs/desktop3.png";
 
 export default function SiteDenisWorks() {
   return (
@@ -54,7 +55,9 @@ export default function SiteDenisWorks() {
         </div>
         <h1 className={styles.heading}>## STACK</h1>
         <div className={styles.stack}></div>
-        <h1 className={styles.heading}>## DESIGN</h1>
+        <h1 id="design" className={styles.heading}>
+          ## DESIGN
+        </h1>
         <div className={styles.design}>
           Here are a few screen grabs/recordings of the website. It is currently
           live at{" "}
@@ -89,6 +92,11 @@ export default function SiteDenisWorks() {
 
               <img
                 src={DENIS_DESIGN_DT_1}
+                className={`${styles.image} ${styles.landscape}`}
+              />
+
+              <img
+                src={DENIS_DESIGN_DT_3}
                 className={`${styles.image} ${styles.landscape}`}
               />
             </div>

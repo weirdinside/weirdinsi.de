@@ -4,6 +4,8 @@ export default function Site20vt() {
   return (
     <div className={styles.page}>
       <div className={styles.page__content}>
+        <h1 className={styles.heading}>## README</h1>
+        <br />
         <div id="readme" className={styles.page__description}>
           <a className={styles.link} target="_blank" href="https://20vt.help">
             20vt.help
@@ -44,7 +46,12 @@ export default function Site20vt() {
           Image Maps and utilize an Image Map Resizer script to maintain the
           drawn areas (which reside on a canvas element).
         </div>
+        <br />
+        <h1 className={styles.heading}>## STACK</h1>
+        <br />
         <div className={styles.stack}></div>
+        <h1 className={styles.heading}>## DESIGN</h1>
+        <br />
       </div>
     </div>
   );

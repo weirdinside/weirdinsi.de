@@ -4,11 +4,17 @@
   user-select: none;
   opacity: 0;
   height: 100%;
+  width: calc(100% - 30px);
   overflow: hidden;
+  margin: 10px 15px;
   animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
-.page__content{
+.heading {
+  color: #5bbdff;
+}
+
+.page__content {
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -23,11 +29,11 @@
   text-decoration: underline;
 }
 
-@keyframes fadeIn{
-  0%{
+@keyframes fadeIn {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }

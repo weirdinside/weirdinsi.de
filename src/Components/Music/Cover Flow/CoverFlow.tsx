@@ -11,18 +11,21 @@ export default function CoverFlow({
   const initialValue = useRef<number>(null);
   const isDragging = useRef<boolean>(false);
 
+  const timeoutId = useRef<number | null>(null);
+
   const [isReady, setIsReady] = useState(false);
 
   function handleScroll() {
     if (!flowRef.current || itemRefs.current.length < 2) return;
 
     const flow = flowRef.current;
-    const item = itemRefs.current[0];
-    if (!item) return;
+    const firstItem = itemRefs.current[0];
+    if (!firstItem) return;
 
-    const itemWidth = item.getBoundingClientRect().width;
-    const viewportCenter = flow.offsetWidth / 2;
-    const containerLeft = flow.getBoundingClientRect().left;
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const flowRect = flow.getBoundingClientRect();
+    const viewportCenter = flowRect.width / 2;
+    const containerLeft = flowRect.left;
 
     const clamp = (val: number, min: number, max: number) =>
       Math.max(min, Math.min(val, max));
@@ -52,8 +55,8 @@ export default function CoverFlow({
       zIndex: (d: number) => Math.round(-Math.abs(220 * d ** 2) + 30),
     };
 
-    itemRefs.current.forEach((item) => {
-      if (!item || !item.firstChild) return;
+    for (const item of itemRefs.current) {
+      if (!item || !item.firstChild) continue;
 
       const rect = item.getBoundingClientRect();
       const itemCenter = rect.left - containerLeft + rect.width / 2;
@@ -61,14 +64,15 @@ export default function CoverFlow({
       const d = distanceFromCenter / itemWidth / 10;
 
       const child = item.firstChild as HTMLElement;
-      child.style.transform = `
-      scale(${style.scale(d)})
-      translateZ(${style.translateZ(d)}em)
-      rotateY(${style.rotateY(d)}deg)
-      translateX(${-style.translateX(d * 2)}%)
-    `;
-      item.style.zIndex = style.zIndex(d).toString();
-    });
+      const scale = style.scale(d);
+      const translateZ = style.translateZ(d);
+      const rotateY = style.rotateY(d);
+      const translateX = -style.translateX(d * 2);
+      const zIndex = style.zIndex(d);
+
+      child.style.transform = `scale(${scale}) translateZ(${translateZ}em) rotateY(${rotateY}deg) translateX(${translateX}%)`;
+      item.style.zIndex = zIndex.toString();
+    }
   }
 
   function handleClick(idx: number) {
@@ -115,21 +119,32 @@ export default function CoverFlow({
       handleScroll();
     }
 
-    setTimeout(() => {
+    timeoutId.current = window.setTimeout(() => {
       handleScroll();
+      setIsReady(true);
     }, 301);
-    // this is shitty, but it compensates for the possibilty of the user opening the music window
-    // the container that this component is located in scales up from 0 for 0.3s, so at 301ms (3.01s)
-    // it calculates the scroll%, when the window is at its full scale.
 
     window.addEventListener("resize", onResize);
 
-    setIsReady(true);
-
     return () => {
+      if (timeoutId.current) {
+        clearTimeout(timeoutId.current);
+        timeoutId.current = null;
+      }
+
       window.removeEventListener("resize", onResize);
+
+      isDragging.current = false;
+      initialValue.current = null;
     };
   }, [flowRef, itemRefs]);
+
+  useLayoutEffect(() => {
+    itemRefs.current = itemRefs.current.slice(0, images.length);
+    while (itemRefs.current.length < images.length) {
+      itemRefs.current.push(null);
+    }
+  }, [images]);
 
   return (
     <div className={styles.cards__wrapper}>
