@@ -53,10 +53,10 @@
 
 .column__nav_heading {
   cursor: pointer;
-  padding: 3px 4px;
+  padding: 4px 5px;
   display: flex;
   font-weight: 600;
-  font-size: clamp(12px, 2.5vw, 16px);
+  font-size: clamp(12px, 2.5vw, 15px);
   flex-direction: row;
   position: relative;
 }

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import styles from "./TextAutoscroll.module.css";
+import styles from "./ReactTextAutoscroll.module.css";
+import RTACodeTypescript from "./RTA Code/RTACodeTypescript";
+import RTADemo from "./RTA Demo/RTADemo";
+import RTACodeJavascript from "./RTA Code/RTACodeJavascript";
 
-export default function TextAutoscroll() {
+export default function ReactTextAutoScroll() {
   return (
     <div className={styles.page}>
       <div className={styles.page__content}>
@@ -13,6 +16,7 @@ export default function TextAutoscroll() {
           <a
             href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/marquee"
             className={styles.link}
+            target="_blank"
             style={{ color: `#49c9af` }}
           >
             &lt;marquee/&gt;
@@ -20,6 +24,7 @@ export default function TextAutoscroll() {
           tag. There are a few alternatives (
           <a
             className={styles.link}
+            target="_blank"
             href="https://www.npmjs.com/package/react-simple-marquee"
           >
             react-simple-marquee
@@ -27,6 +32,7 @@ export default function TextAutoscroll() {
           and{" "}
           <a
             className={styles.link}
+            target="_blank"
             href="https://www.npmjs.com/package/react-fast-marquee"
           >
             react-fast-marquee
@@ -44,11 +50,17 @@ export default function TextAutoscroll() {
         <br />
         <h1 className={styles.heading}>## DEMO</h1>
         <br />
-        
+        <div className={styles.demo}>
+          <RTADemo />
+        </div>
+        <br />
         <h1 className={styles.heading}>## CODE [TYPESCRIPT]</h1>
         <br />
-        
-        <h1 className={styles.heading}>## CODE [VANILLA JS]</h1>
+        <RTACodeTypescript />
+        <br />
+        <h1 className={styles.heading}>## CODE [JAVASCRIPT]</h1>
+        <br />
+        <RTACodeJavascript />
         <br />
       </div>
     </div>

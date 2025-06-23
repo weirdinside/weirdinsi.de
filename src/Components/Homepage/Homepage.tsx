@@ -18,7 +18,7 @@ export default function Homepage() {
   const [mousePosition, setMousePosition] = useState<number[]>([0, 0]);
   const [windowSize, setWindowSize] = useState<number[]>([]);
 
-  const [seed, setSeed] = useState<number>(0);
+  // const [seed, setSeed] = useState<number>(0);
 
   const intervalRef = useRef<number>(null);
 
@@ -46,9 +46,9 @@ export default function Homepage() {
 
     windowListener();
 
-    intervalRef.current = setInterval(() => {
-      setSeed(Math.random() * 200);
-    }, 10);
+    // intervalRef.current = setInterval(() => {
+    //   setSeed(Math.random() * 200);
+    // }, 10);
 
     window.addEventListener("resize", windowListener);
     return () => {

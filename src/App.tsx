@@ -28,19 +28,20 @@ import PreviewModal from "./Components/Modals/PreviewModal";
 import { ImagePreviewContext } from "./Contexts/ImagePreviewContext";
 
 import Console from "./Components/Console/Console";
+import Dev from "./Components/Dev/Dev";
+import Functions from "./Components/Dev/Functions/Functions";
+import ReactKnob from "./Components/Dev/Functions/React Knob/ReactKnob";
+import ReactTextAutoScroll from "./Components/Dev/Functions/React Text Autoscroll/ReactTextAutoscroll";
 import Site20vt from "./Components/Dev/Projects/20vt.help/Site20vt";
 import SiteBenderFilm from "./Components/Dev/Projects/bender.film/SiteBenderFilm";
 import SiteDenisWorks from "./Components/Dev/Projects/denis.works/SiteDenisWorks";
-import Dev from "./Components/Dev/Dev";
+import Projects from "./Components/Dev/Projects/Projects";
 import SiteReesClub from "./Components/Dev/Projects/rees.club/SiteReesClub";
 import DENIS from "./Components/Music/Denis Biblioni/DENIS/DENIS";
 import DenisBiblioni from "./Components/Music/Denis Biblioni/DenisBiblioni";
 import CrossCountry from "./Components/Music/RRST/Cross Country/CrossCountry";
 import CruiseControl from "./Components/Music/RRST/Cruise Control/CruiseControl";
 import Equinox from "./Components/Music/RRST/Equinox/Equinox";
-import Projects from "./Components/Dev/Projects/Projects";
-import Functions from "./Components/Dev/Functions/Functions";
-import TextAutoscroll from "./Components/Dev/Functions/Text Autoscroll/TextAutoscroll";
 
 {
   /* COMPONENT EXPORT */
@@ -110,7 +111,8 @@ export default function App() {
               <Route path="bender" element={<SiteBenderFilm />} />
             </Route>
             <Route path="functions" element={<Functions />}>
-              <Route path="textautoscroll" element={<TextAutoscroll />} />
+              <Route path="textautoscroll" element={<ReactTextAutoScroll />} />
+              <Route path="reactknob" element={<ReactKnob />} />
             </Route>
           </Route>
           <Route path="music" element={<Music />}>

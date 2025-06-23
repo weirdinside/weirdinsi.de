@@ -167,6 +167,24 @@ export default function Console() {
         setName(username);
         setPromptText(`logged in as ${username}`);
       }
+    } else if (input.startsWith("audio")) {
+      const audioMatch = input.match(/^audio\s+(.+)$/);
+      if (audioMatch) {
+        const file = audioMatch[1].trim();
+        console.log(file);
+        if (validFiles.has(file)) {
+          const output = validFiles.get(file);
+          if (output) setPromptText(output);
+        } else {
+          setPromptText(
+            `audio ${file}: no such command. type 'audio' to check valid commands.`
+          );
+        }
+      } else {
+        setPromptText(
+          "audio <cmd>: specify an audio command. type 'audio' for a list of commands."
+        );
+      }
     } else {
       setPromptText(`${input}: no such command`);
     }

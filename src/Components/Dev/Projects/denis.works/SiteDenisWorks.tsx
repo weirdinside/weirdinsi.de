@@ -54,7 +54,9 @@ export default function SiteDenisWorks() {
           <br /> <br />
         </div>
         <h1 className={styles.heading}>## STACK</h1>
-        <div className={styles.stack}></div>
+        <div className={styles.stack}>
+          
+        </div>
         <h1 id="design" className={styles.heading}>
           ## DESIGN
         </h1>

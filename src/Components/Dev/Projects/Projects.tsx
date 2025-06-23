@@ -68,6 +68,9 @@ export default function Projects() {
           items={DEFAULT_PAGES}
         />
       </div>
+      <div className={styles.logo}>
+        
+      </div>
       <div className={styles.outlet}>
         <Outlet />
       </div>

@@ -1,4 +1,4 @@
-
+import styles from "./ReactKnob.module.css";
 export default function ReactKnob() {
-  return <div>ReactKnob</div>;
+  return <div className={styles.page}>ReactKnob</div>;
 }

@@ -5,6 +5,7 @@ import styles from "./Functions.module.css";
 import { useEffect, useState } from "react";
 import JS_ICON from "/other logos/jslogo.png";
 import MD_ICON from "/other logos/mdlogo.png";
+import HTML_ICON from "/other logos/htmllogo.png";
 import TS_ICON from "/other logos/tslogo.png";
 
 const DEFAULT_PAGES = [
@@ -14,14 +15,19 @@ const DEFAULT_PAGES = [
     url: "#readme",
   },
   {
+    title: "demo.html",
+    icon: HTML_ICON,
+    url: "#demo",
+  },
+  {
     title: "code.ts",
     icon: TS_ICON,
-    url: "#stack",
+    url: "#ts",
   },
   {
     title: "code.js",
     icon: JS_ICON,
-    url: "#stack",
+    url: "#js",
   },
 ];
 
@@ -40,7 +46,7 @@ export default function Functions() {
     <div className={styles.column__main}>
       <div className={styles.column__nav}>
         <DevNavItem
-          title="TEXT-AUTOSCROLL"
+          title="REACT-TEXT-AUTOSCROLL"
           link="textautoscroll"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
