@@ -150,7 +150,12 @@ export default function AutoscrollText({
       ref={marqueeRef}
     >
       <p
-        style={{ opacity: "0", margin: "0", padding: "0", textWrap: "nowrap" }}
+        style={{
+          opacity: "0",
+          margin: "0",
+          padding: "0",
+          whiteSpace: "nowrap",
+        }}
       >
         {"x"}
       </p>

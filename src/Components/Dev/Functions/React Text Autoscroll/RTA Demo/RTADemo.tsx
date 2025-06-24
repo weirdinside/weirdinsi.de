@@ -100,8 +100,9 @@ function RTADemo() {
             />
           </label>
         </div>
+        <br />
         <p className={styles["subheading"]}>
-          the container width is {containerWidth}px. <br />
+          the container width is {containerWidth}px. <br /><br />
           when the container is smaller than the width of the text inside it,
           the text will automatically scroll.
         </p>

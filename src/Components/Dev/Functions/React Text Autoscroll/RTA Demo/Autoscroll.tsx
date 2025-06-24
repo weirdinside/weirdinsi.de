@@ -30,10 +30,10 @@ export default function AutoscrollText({
   //                STATES                //
   // ------------------------------------ //
 
-  const [scrollTime, setScrollTime] = useState(0); // stores scrollTime variable after calculation in checkWindowSize hook
-  const [containerWidth, setContainerWidth] = useState(0); // again, arbitrary number but tracks container width
-  const [difference, setDifference] = useState(0); // the int value of the pixel value to move the text
-  const [textStyle, setTextStyle] = useState({}); // stores the states to be animated between. set on an interval
+  const [scrollTime, setScrollTime] = useState<number>(0); // stores scrollTime variable after calculation in checkWindowSize hook
+  const [containerWidth, setContainerWidth] = useState<number>(0); // again, arbitrary number but tracks container width
+  const [difference, setDifference] = useState<number>(0); // the int value of the pixel value to move the text
+  const [textStyle, setTextStyle] = useState<React.CSSProperties>({}); // stores the states to be animated between. set on an interval
 
   // ------------------------------------ //
   //                  REFS                //
@@ -104,7 +104,7 @@ export default function AutoscrollText({
   // set the initial style before rendering the rest
   useEffect(
     function setInitialStyle() {
-      function getAlignmentStyle() {
+      function getAlignmentStyle(): React.CSSProperties {
         const baseStyle = {
           position: "absolute",
           textWrap: "nowrap",
@@ -112,14 +112,17 @@ export default function AutoscrollText({
         };
 
         if (difference > 0) {
-          return { ...baseStyle, right: `${-difference}px` };
+          return {
+            ...baseStyle,
+            right: `${-difference}px`,
+          } as React.CSSProperties;
         }
 
         switch (align) {
           case "left":
-            return { ...baseStyle, left: "0px" };
+            return { ...baseStyle, left: "0px" } as React.CSSProperties;
           case "right":
-            return { ...baseStyle, right: "0px" };
+            return { ...baseStyle, right: "0px" } as React.CSSProperties;
           case "center":
             return {
               ...baseStyle,
@@ -127,7 +130,7 @@ export default function AutoscrollText({
               right: "0",
               marginInline: "auto",
               width: "fit-content",
-            };
+            } as React.CSSProperties;
         }
       }
       setTextStyle(getAlignmentStyle);
@@ -208,7 +211,12 @@ export default function AutoscrollText({
       ref={marqueeRef}
     >
       <p
-        style={{ opacity: "0", margin: "0", padding: "0", textWrap: "nowrap" }}
+        style={{
+          opacity: "0",
+          margin: "0",
+          padding: "0",
+          whiteSpace: "nowrap",
+        }}
       >
         {"x"}
       </p>
