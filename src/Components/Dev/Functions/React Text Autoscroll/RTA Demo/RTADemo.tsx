@@ -38,7 +38,7 @@ function RTADemo() {
             set the text alignment for when the container is larger
             <select
               style={{
-                border: "none",
+                border: "2px solid black",
                 fontSize: "20px",
                 borderRadius: "10px",
                 padding: "10px",
@@ -71,7 +71,8 @@ function RTADemo() {
             />
           </label>
           <label className={styles["input__label"]}>
-            set scroll speed in the below field (must be a float or int above zero)
+            set scroll speed in the below field (must be a float or int above
+            zero)
             <input
               onChange={(e) => {
                 if (parseFloat(e.target.value) > 0) {
@@ -102,7 +103,8 @@ function RTADemo() {
         </div>
         <br />
         <p className={styles["subheading"]}>
-          the container width is {containerWidth}px. <br /><br />
+          the container width is {containerWidth}px. <br />
+          <br />
           when the container is smaller than the width of the text inside it,
           the text will automatically scroll.
         </p>
@@ -121,9 +123,10 @@ function RTADemo() {
         </AutoscrollText>
       </div>
       <div className={styles["codeview"]}>
-        <h1 className={styles["codeview__heading"]}>
-          here's what the code looks like
-        </h1>
+        <p className={styles["subheading"]}>
+          here is what the code looks like in use with the component. click
+          anywhere on the snippet below to copy it.
+        </p>
         <div
           ref={codeRef}
           onClick={(e: React.SyntheticEvent<HTMLDivElement>) => {
@@ -137,7 +140,7 @@ function RTADemo() {
           <div className={styles["codeview__overlay"]}></div>
           {
             <>
-              <span>{`<`}</span>
+              <span style={{ color: `white` }}>{`<`}</span>
               <span style={{ color: "#50cfb6" }}>{`AutoscrollText`}</span>
             </>
           }{" "}
@@ -166,16 +169,16 @@ function RTADemo() {
               <span style={{ color: "#1995e0" }}>{`{`}</span>
               <span style={{ color: "#F28C28" }}>"{alignmentOption}"</span>
               <span style={{ color: "#1995e0" }}>{`}`}</span>
-              <span>{`>`}</span>
+              <span style={{ color: `white` }}>{`>`}</span>
             </>
           }
           <br />
           {`${sampleText}`} <br />
           {
             <>
-              <span>{`<`}</span>
+              <span style={{ color: `white` }}>{`<`}</span>
               <span style={{ color: "#50cfb6" }}>{`/AutoscrollText`}</span>
-              <span>{`>`}</span>
+              <span style={{ color: `white` }}>{`>`}</span>
             </>
           }{" "}
           <br />
