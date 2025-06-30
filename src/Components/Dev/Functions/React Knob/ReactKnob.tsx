@@ -18,7 +18,8 @@ export default function ReactKnob() {
           UX of a knob on a touch device was a bit funky and tossed the use case
           in the garbage, but have kept developing it for use on other projects.
         </div>
-        <br />I also ran an experiment using LLMs to see how well they could
+        <br />
+        For fun, I also ran an experiment using LLMs to see how well they could
         understand and execute upon translating polar coordinates into radians
         for this project. As of March 2025, no LLM has been able to figure out
         the execution properly, despite getting the theory correct (even given

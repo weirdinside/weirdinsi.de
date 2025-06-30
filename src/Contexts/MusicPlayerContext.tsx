@@ -7,21 +7,24 @@ type MusicPlayerProviderProps = {
 type MusicPlayerContextType = {
   play: () => void;
   pause: () => void;
-  stop: ()=>void;
+  stop: () => void;
   seek: (arg0: number) => void;
   currentTime: number;
   setCurrentFile: (songUrl: string) => void;
   duration: number;
   songInfo: SongInfo;
   selectSong: (arg0: SongInfo) => void;
+  currentFile: string;
   playerState: "playing" | "paused";
+  setPlaybackRate: (arg0: number) => void;
 };
 
 const defaultContext: MusicPlayerContextType = {
   play: () => {},
   pause: () => {},
-  stop: ()=>{},
+  stop: () => {},
   seek: () => {},
+  currentFile: "",
   setCurrentFile: () => {},
   duration: 0,
   songInfo: {
@@ -32,6 +35,7 @@ const defaultContext: MusicPlayerContextType = {
   currentTime: 0,
   selectSong: () => {},
   playerState: "playing",
+  setPlaybackRate: () => {},
 };
 
 type SongInfo = {
@@ -71,11 +75,17 @@ export default function MusicPlayerProvider({
     if (playerRef.current && currentFile) playerRef.current.pause();
   }
 
-  function stop(){
+  function stop() {
     setDuration(0);
     setCurrentTime(0);
-    setCurrentFile('');
-    if(playerRef.current) playerRef.current.src = '';
+    setPlaybackRate(1);
+    setCurrentFile("");
+    if (playerRef.current) playerRef.current.src = "";
+  }
+
+  function setPlaybackRate(rate: number) {
+    if (rate < 0 && rate > 2) return;
+    if (playerRef.current) playerRef.current.playbackRate = rate;
   }
 
   function seek(newTime: number) {
@@ -98,11 +108,13 @@ export default function MusicPlayerProvider({
         seek,
         stop,
         currentTime,
+        currentFile,
         setCurrentFile,
         duration,
         songInfo,
         selectSong,
         playerState,
+        setPlaybackRate,
       }}
     >
       {children}

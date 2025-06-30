@@ -23,7 +23,8 @@ export default function Console() {
     'hello, welcome to my internal system. please enter a command, or "help" to see a list of commands'
   );
 
-  const { pause, play, stop } = useContext(MusicPlayerContext);
+  const { pause, play, stop, currentFile, setPlaybackRate } =
+    useContext(MusicPlayerContext);
 
   const validDirs = new Set([
     "dev",
@@ -58,21 +59,6 @@ export default function Console() {
 
     const commands: Record<string, () => void> = {
       "": () => setPromptText(""),
-
-      play: () => {
-        play();
-        setPromptText("");
-      },
-
-      pause: () => {
-        pause();
-        setPromptText("song paused");
-      },
-
-      stop: () => {
-        stop();
-        setPromptText("song stopped");
-      },
 
       ls: () => setPromptText("readme.txt\tfriends.txt\tabout.txt\tmusic\tdev"),
 
@@ -134,9 +120,8 @@ export default function Console() {
         );
       }
     } else if (input.startsWith("cd")) {
-      const cdMatch = input.match(/^cd\s+(.+)$/);
-      if (cdMatch) {
-        const dir = cdMatch[1].trim();
+      if (input.startsWith('cd ')) {
+        const dir = input.substring(3, input.length);
         if (validDirs.has(dir)) {
           navigate(`/${dir}`);
         } else {
@@ -151,7 +136,6 @@ export default function Console() {
       }
     } else if (input.startsWith("user")) {
       const username = input.substring(5, input.length);
-      console.log(username);
       if (username === "admin" || username === "root")
         setPromptText("error: unauthorized");
       else if (username === "weirdinside" || username === "weird inside") {
@@ -170,14 +154,23 @@ export default function Console() {
     } else if (input.startsWith("audio")) {
       const audioMatch = input.match(/^audio\s+(.+)$/);
       if (audioMatch) {
-        const file = audioMatch[1].trim();
-        console.log(file);
-        if (validFiles.has(file)) {
-          const output = validFiles.get(file);
-          if (output) setPromptText(output);
+        const command = input.substring(6, input.length);
+        if (!currentFile) {
+          setPromptText(
+            "no file selected, or command does not exist. type 'audio' to check valid commands."
+          );
+        } else if (command === "play") {
+          play();
+          setPromptText("song playing");
+        } else if (command === "pause") {
+          pause();
+          setPromptText("song paused");
+        } else if (command === "stop") {
+          stop();
+          setPromptText("song stopped");
         } else {
           setPromptText(
-            `audio ${file}: no such command. type 'audio' to check valid commands.`
+            `audio ${command}: no such command. type 'audio' to check valid commands.`
           );
         }
       } else {

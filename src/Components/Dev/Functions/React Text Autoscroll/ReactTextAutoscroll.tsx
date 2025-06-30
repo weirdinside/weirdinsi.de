@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./ReactTextAutoscroll.module.css";
-import RTACodeTypescript from "./RTA Code/RTACodeTypescript";
+import RTACodeTypescript from "./RTA Code/RTACode";
 import RTADemo from "./RTA Demo/RTADemo";
-import RTACodeJavascript from "./RTA Code/RTACodeJavascript";
 
 export default function ReactTextAutoScroll() {
   return (
@@ -54,13 +53,9 @@ export default function ReactTextAutoScroll() {
           <RTADemo />
         </div>
         <br />
-        <h1 className={styles.heading}>## CODE [TYPESCRIPT]</h1>
+        <h1 className={styles.heading}>## CODE</h1>
         <br />
         <RTACodeTypescript />
-        <br />
-        <h1 className={styles.heading}>## CODE [JAVASCRIPT]</h1>
-        <br />
-        <RTACodeJavascript />
         <br />
       </div>
     </div>
