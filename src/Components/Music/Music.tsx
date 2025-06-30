@@ -18,15 +18,8 @@ import CoverFlow from "./Cover Flow/CoverFlow";
 
 export default function Music() {
   const location = useLocation();
-  const {
-    play,
-    pause,
-    seek,
-    songInfo,
-    currentTime,
-    duration,
-    playerState,
-  } = useContext(MusicPlayerContext);
+  const { play, pause, seek, songInfo, currentTime, duration, playerState } =
+    useContext(MusicPlayerContext);
 
   const [songTime, setSongTime] = useState<number>(0);
   const [isSeeking, setIsSeeking] = useState<boolean>(false);
@@ -200,7 +193,14 @@ export default function Music() {
             >
               DENIS BIBLIONI
             </Link>
-            <h4 className={styles.nav__section_option}>DENIS</h4>
+            <Link
+              to="denis-biblioni/DENIS"
+              className={`${styles.nav__section_option} ${
+                location.pathname.split("/").at(-1) === "DENIS" && styles.active
+              }`}
+            >
+              DENIS
+            </Link>
             <h4 className={styles.nav__section_option}>the usual*</h4>
           </div>
           <div className={styles.column__nav_section}>

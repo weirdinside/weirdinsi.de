@@ -30,6 +30,10 @@ import GAMEPOINT_ART from "/art/weird inside cover art/gamepoint.jpg";
 import LIKETHIS_ART from "/art/weird inside cover art/likethis.jpg";
 import EUREKA_ART from "/art/weird inside cover art/eureka.jpg";
 
+import FLOPPYDISK_ART from "/art/denis biblioni cover art/floppydisk.jpg";
+import PASSWORDPROTECTED_ART from "/art/denis biblioni cover art/passwordprotected.jpg";
+import DENIS_ART from "/art/denis biblioni cover art/DENIS.jpg";
+
 export const ALL_MUSIC = [
   {
     imageSrc: RRST_COLDSTART_ART3,
@@ -392,5 +396,71 @@ export const WEIRDINSIDE_SINGLES = [
     album: "eureka!",
     file: "/music/eureka.mp3",
     artwork: EUREKA_ART,
+  },
+];
+
+export const DENIS_EP_MUSIC = [
+  {
+    track: "01",
+    time: "2:13",
+    name: "floppy disk",
+    album: "DENIS",
+    file: "/music/floppydisk.mp3",
+    artwork: FLOPPYDISK_ART,
+  },
+  {
+    track: "02",
+    time: "2:26",
+    name: "password protected",
+    album: "DENIS",
+    file: "/music/passwordprotected.mp3",
+    artwork: PASSWORDPROTECTED_ART,
+  },
+  {
+    track: "03",
+    time: "1:12",
+    name: "does it rain there?",
+    album: "DENIS",
+    file: "/music/doesitrainthere.mp3",
+    artwork: DENIS_ART,
+  },
+  {
+    track: "04",
+    time: "1:40",
+    name: "little goose",
+    album: "DENIS",
+    file: "/music/littlegoose.mp3",
+    artwork: DENIS_ART,
+  },
+  {
+    track: "05",
+    time: "3:31",
+    name: "getting nothing done",
+    album: "DENIS",
+    file: "/music/gettingnothingdone.mp3",
+    artwork: DENIS_ART,
+  },
+  {
+    track: "06",
+    time: "1:26",
+    name: "look at the sun!",
+    album: "DENIS",
+    file: "/music/lookatthesun.mp3",
+    artwork: DENIS_ART,
+  },
+];
+
+export const DENIS_EP_ARTWORKS = [
+  {
+    imageSrc: FLOPPYDISK_ART,
+    description: "'floppy disk' single art",
+  },
+  {
+    imageSrc: PASSWORDPROTECTED_ART,
+    description: "'password protected' single art",
+  },
+  {
+    imageSrc: DENIS_ART,
+    description: "'DENIS' EP art",
   },
 ];

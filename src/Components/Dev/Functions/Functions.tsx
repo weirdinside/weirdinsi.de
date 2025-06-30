@@ -3,9 +3,8 @@ import DevNavItem from "../NavItem/DevNavItem";
 import styles from "./Functions.module.css";
 
 import { useEffect, useState } from "react";
-import JS_ICON from "/other logos/jslogo.png";
-import MD_ICON from "/other logos/mdlogo.png";
 import HTML_ICON from "/other logos/htmllogo.png";
+import MD_ICON from "/other logos/mdlogo.png";
 import TS_ICON from "/other logos/tslogo.png";
 
 const DEFAULT_PAGES = [
@@ -23,11 +22,6 @@ const DEFAULT_PAGES = [
     title: "code.ts",
     icon: TS_ICON,
     url: "#ts",
-  },
-  {
-    title: "code.js",
-    icon: JS_ICON,
-    url: "#js",
   },
 ];
 

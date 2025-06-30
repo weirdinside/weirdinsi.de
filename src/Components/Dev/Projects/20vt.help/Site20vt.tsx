@@ -49,9 +49,21 @@ export default function Site20vt() {
         <br />
         <h1 className={styles.heading}>## STACK</h1>
         <br />
-        <div className={styles.stack}></div>
+        <div className={styles.stack}>
+          This website has been through many iterations, starting with a Vanilla
+          JS / HTML version and progressing into a React/Vite version. The site
+          is currently using Next.JS and Supabase (primarily used for the Wheel
+          Gallery database). Nuqs is used across the site for query state
+          management, as items like search terms, active articles and active
+          filters are pertinent in shared links to this website.
+        </div>
+        <br />
         <h1 className={styles.heading}>## DESIGN</h1>
         <br />
+        <div className={styles.design}>
+
+        </div>
+         <br />
       </div>
     </div>
   );

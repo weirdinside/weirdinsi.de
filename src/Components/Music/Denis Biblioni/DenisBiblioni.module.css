@@ -1,0 +1,12 @@
+.page {
+  height: 100%;
+  width: 100%;
+}
+
+.outlet {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: gray transparent;
+}

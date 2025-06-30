@@ -20,6 +20,7 @@ export default function DevNavItem({
   setActiveItem: (arg0: string) => void;
   items: Items[];
 }) {
+  
   const isActive = link === activeItem;
 
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function DevNavItem({
         ) {
           if (isActive) {
             setActiveItem("");
-            navigate("/dev");
+            navigate(".");
           } else {
             setActiveItem(link);
             navigate(link);

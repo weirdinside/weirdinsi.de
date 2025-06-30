@@ -55,8 +55,13 @@ export default function SiteDenisWorks() {
         </div>
         <h1 className={styles.heading}>## STACK</h1>
         <div className={styles.stack}>
-          
+          This website is a static website that utilizes CSR (Client Side
+          Rendering) due to being built with React (Vite as the scaffolding
+          tool). ThreeJS / R3F are the tools used for displaying the 3D models,
+          and the audio player was built from scratch (although I had an initial
+          experiment with HowlerJS).
         </div>
+        <br />
         <h1 id="design" className={styles.heading}>
           ## DESIGN
         </h1>
